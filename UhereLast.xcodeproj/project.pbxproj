@@ -65,12 +65,65 @@
 		0E283E212285081600729447 /* SelecionaDiasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E283E202285081600729447 /* SelecionaDiasTableViewController.swift */; };
 		0E283E232285082C00729447 /* SelecionaDiasCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E283E222285082C00729447 /* SelecionaDiasCell.swift */; };
 		0E283E26228509CF00729447 /* UhereLast.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E283E24228509CF00729447 /* UhereLast.xcdatamodeld */; };
+		0E283E2D22850DD100729447 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E283E2B22850DD100729447 /* Interface.storyboard */; };
+		0E283E2F22850DD100729447 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E283E2E22850DD100729447 /* Assets.xcassets */; };
+		0E283E3622850DD200729447 /* UhereWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0E283E3522850DD200729447 /* UhereWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0E283E3B22850DD200729447 /* SemestreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E283E3A22850DD200729447 /* SemestreController.swift */; };
+		0E283E3D22850DD200729447 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E283E3C22850DD200729447 /* ExtensionDelegate.swift */; };
+		0E283E3F22850DD200729447 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E283E3E22850DD200729447 /* NotificationController.swift */; };
+		0E283E4122850DD200729447 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E283E4022850DD200729447 /* Assets.xcassets */; };
+		0E283E4622850DD200729447 /* UhereWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 0E283E2922850DD100729447 /* UhereWatch.app */; };
+		0E283E5022850EDF00729447 /* AtividadeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E283E4F22850EDF00729447 /* AtividadeController.swift */; };
+		0E283E5222850EF400729447 /* AvaliacoesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E283E5122850EF400729447 /* AvaliacoesController.swift */; };
 		0E9FF35F2284FFAE0072F994 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9FF35E2284FFAE0072F994 /* AppDelegate.swift */; };
 		0E9FF36C2284FFAE0072F994 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E9FF36A2284FFAE0072F994 /* LaunchScreen.storyboard */; };
 		0E9FF3742284FFD70072F994 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E9FF3732284FFD70072F994 /* Main.storyboard */; };
 		0E9FF37D228501DD0072F994 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E9FF37C228501DC0072F994 /* Assets.xcassets */; };
+		0EA7641D22861BA4009C4D8F /* SemestreRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA7641C22861BA4009C4D8F /* SemestreRowController.swift */; };
 		4FA3C761D5BC0B7CD3354EC8 /* Pods_UhereLast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7548F34CF802E4B2AFF0A5 /* Pods_UhereLast.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0E283E3722850DD200729447 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E9FF3532284FFAE0072F994 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E283E3422850DD200729447;
+			remoteInfo = "UhereWatch Extension";
+		};
+		0E283E4422850DD200729447 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E9FF3532284FFAE0072F994 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E283E2822850DD100729447;
+			remoteInfo = UhereWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0E283E4A22850DD200729447 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0E283E3622850DD200729447 /* UhereWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0E283E4E22850DD200729447 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				0E283E4622850DD200729447 /* UhereWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E283DA1228505EB00729447 /* Atividade+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Atividade+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -131,18 +184,39 @@
 		0E283E202285081600729447 /* SelecionaDiasTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelecionaDiasTableViewController.swift; sourceTree = "<group>"; };
 		0E283E222285082C00729447 /* SelecionaDiasCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelecionaDiasCell.swift; sourceTree = "<group>"; };
 		0E283E25228509CF00729447 /* UhereLast.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UhereLast.xcdatamodel; sourceTree = "<group>"; };
+		0E283E2922850DD100729447 /* UhereWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UhereWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E283E2C22850DD100729447 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		0E283E2E22850DD100729447 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0E283E3022850DD100729447 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E283E3522850DD200729447 /* UhereWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "UhereWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E283E3A22850DD200729447 /* SemestreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemestreController.swift; sourceTree = "<group>"; };
+		0E283E3C22850DD200729447 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		0E283E3E22850DD200729447 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		0E283E4022850DD200729447 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0E283E4222850DD200729447 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E283E4322850DD200729447 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		0E283E4F22850EDF00729447 /* AtividadeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtividadeController.swift; sourceTree = "<group>"; };
+		0E283E5122850EF400729447 /* AvaliacoesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaliacoesController.swift; sourceTree = "<group>"; };
 		0E9FF35B2284FFAE0072F994 /* UhereLast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UhereLast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E9FF35E2284FFAE0072F994 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E9FF36B2284FFAE0072F994 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E9FF36D2284FFAE0072F994 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E9FF3732284FFD70072F994 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0E9FF37C228501DC0072F994 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0EA7641C22861BA4009C4D8F /* SemestreRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemestreRowController.swift; sourceTree = "<group>"; };
 		75DDB5AB607C18DF5EB5B7FB /* Pods-UhereLast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UhereLast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UhereLast/Pods-UhereLast.debug.xcconfig"; sourceTree = "<group>"; };
 		DC7548F34CF802E4B2AFF0A5 /* Pods_UhereLast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UhereLast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F42AC4B3DBC8622B9AEB1001 /* Pods-UhereLast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UhereLast.release.xcconfig"; path = "Pods/Target Support Files/Pods-UhereLast/Pods-UhereLast.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0E283E3222850DD200729447 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0E9FF3582284FFAE0072F994 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -361,10 +435,37 @@
 			path = Prova;
 			sourceTree = "<group>";
 		};
+		0E283E2A22850DD100729447 /* UhereWatch */ = {
+			isa = PBXGroup;
+			children = (
+				0E283E2B22850DD100729447 /* Interface.storyboard */,
+				0E283E2E22850DD100729447 /* Assets.xcassets */,
+				0E283E3022850DD100729447 /* Info.plist */,
+			);
+			path = UhereWatch;
+			sourceTree = "<group>";
+		};
+		0E283E3922850DD200729447 /* UhereWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0EA764192285F044009C4D8F /* Semestre */,
+				0EA7641A2285F04E009C4D8F /* Atividade */,
+				0EA7641B2285F055009C4D8F /* Avaliacoes */,
+				0E283E3C22850DD200729447 /* ExtensionDelegate.swift */,
+				0E283E3E22850DD200729447 /* NotificationController.swift */,
+				0E283E4022850DD200729447 /* Assets.xcassets */,
+				0E283E4222850DD200729447 /* Info.plist */,
+				0E283E4322850DD200729447 /* PushNotificationPayload.apns */,
+			);
+			path = "UhereWatch Extension";
+			sourceTree = "<group>";
+		};
 		0E9FF3522284FFAE0072F994 = {
 			isa = PBXGroup;
 			children = (
 				0E9FF35D2284FFAE0072F994 /* UhereLast */,
+				0E283E2A22850DD100729447 /* UhereWatch */,
+				0E283E3922850DD200729447 /* UhereWatch Extension */,
 				0E9FF35C2284FFAE0072F994 /* Products */,
 				BF7322A02272B98336809456 /* Pods */,
 				F1C0F1BB6AE0AEB5BB64733C /* Frameworks */,
@@ -375,6 +476,8 @@
 			isa = PBXGroup;
 			children = (
 				0E9FF35B2284FFAE0072F994 /* UhereLast.app */,
+				0E283E2922850DD100729447 /* UhereWatch.app */,
+				0E283E3522850DD200729447 /* UhereWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -382,16 +485,49 @@
 		0E9FF35D2284FFAE0072F994 /* UhereLast */ = {
 			isa = PBXGroup;
 			children = (
+				0EA76418228530D0009C4D8F /* View */,
 				0E283DC8228506A100729447 /* Controller */,
 				0E283D9F228505B400729447 /* Model */,
 				0E9FF35E2284FFAE0072F994 /* AppDelegate.swift */,
-				0E9FF3732284FFD70072F994 /* Main.storyboard */,
 				0E9FF37C228501DC0072F994 /* Assets.xcassets */,
-				0E9FF36A2284FFAE0072F994 /* LaunchScreen.storyboard */,
 				0E9FF36D2284FFAE0072F994 /* Info.plist */,
 				0E283E24228509CF00729447 /* UhereLast.xcdatamodeld */,
 			);
 			path = UhereLast;
+			sourceTree = "<group>";
+		};
+		0EA76418228530D0009C4D8F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E9FF3732284FFD70072F994 /* Main.storyboard */,
+				0E9FF36A2284FFAE0072F994 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0EA764192285F044009C4D8F /* Semestre */ = {
+			isa = PBXGroup;
+			children = (
+				0E283E3A22850DD200729447 /* SemestreController.swift */,
+				0EA7641C22861BA4009C4D8F /* SemestreRowController.swift */,
+			);
+			path = Semestre;
+			sourceTree = "<group>";
+		};
+		0EA7641A2285F04E009C4D8F /* Atividade */ = {
+			isa = PBXGroup;
+			children = (
+				0E283E4F22850EDF00729447 /* AtividadeController.swift */,
+			);
+			path = Atividade;
+			sourceTree = "<group>";
+		};
+		0EA7641B2285F055009C4D8F /* Avaliacoes */ = {
+			isa = PBXGroup;
+			children = (
+				0E283E5122850EF400729447 /* AvaliacoesController.swift */,
+			);
+			path = Avaliacoes;
 			sourceTree = "<group>";
 		};
 		BF7322A02272B98336809456 /* Pods */ = {
@@ -414,6 +550,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0E283E2822850DD100729447 /* UhereWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E283E4B22850DD200729447 /* Build configuration list for PBXNativeTarget "UhereWatch" */;
+			buildPhases = (
+				0E283E2722850DD100729447 /* Resources */,
+				0E283E4A22850DD200729447 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0E283E3822850DD200729447 /* PBXTargetDependency */,
+			);
+			name = UhereWatch;
+			productName = UhereWatch;
+			productReference = 0E283E2922850DD100729447 /* UhereWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		0E283E3422850DD200729447 /* UhereWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E283E4722850DD200729447 /* Build configuration list for PBXNativeTarget "UhereWatch Extension" */;
+			buildPhases = (
+				0E283E3122850DD200729447 /* Sources */,
+				0E283E3222850DD200729447 /* Frameworks */,
+				0E283E3322850DD200729447 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "UhereWatch Extension";
+			productName = "UhereWatch Extension";
+			productReference = 0E283E3522850DD200729447 /* UhereWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		0E9FF35A2284FFAE0072F994 /* UhereLast */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0E9FF3702284FFAE0072F994 /* Build configuration list for PBXNativeTarget "UhereLast" */;
@@ -423,10 +593,12 @@
 				0E9FF3582284FFAE0072F994 /* Frameworks */,
 				0E9FF3592284FFAE0072F994 /* Resources */,
 				520045DE697A68064CC4C176 /* [CP] Embed Pods Frameworks */,
+				0E283E4E22850DD200729447 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0E283E4522850DD200729447 /* PBXTargetDependency */,
 			);
 			name = UhereLast;
 			productName = UhereLast;
@@ -443,6 +615,12 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = tatsu;
 				TargetAttributes = {
+					0E283E2822850DD100729447 = {
+						CreatedOnToolsVersion = 10.2;
+					};
+					0E283E3422850DD200729447 = {
+						CreatedOnToolsVersion = 10.2;
+					};
 					0E9FF35A2284FFAE0072F994 = {
 						CreatedOnToolsVersion = 10.2;
 					};
@@ -462,11 +640,30 @@
 			projectRoot = "";
 			targets = (
 				0E9FF35A2284FFAE0072F994 /* UhereLast */,
+				0E283E2822850DD100729447 /* UhereWatch */,
+				0E283E3422850DD200729447 /* UhereWatch Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0E283E2722850DD100729447 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E283E2F22850DD100729447 /* Assets.xcassets in Resources */,
+				0E283E2D22850DD100729447 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0E283E3322850DD200729447 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E283E4122850DD200729447 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0E9FF3592284FFAE0072F994 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -531,6 +728,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0E283E3122850DD200729447 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EA7641D22861BA4009C4D8F /* SemestreRowController.swift in Sources */,
+				0E283E3F22850DD200729447 /* NotificationController.swift in Sources */,
+				0E283E3D22850DD200729447 /* ExtensionDelegate.swift in Sources */,
+				0E283E5222850EF400729447 /* AvaliacoesController.swift in Sources */,
+				0E283E3B22850DD200729447 /* SemestreController.swift in Sources */,
+				0E283E5022850EDF00729447 /* AtividadeController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0E9FF3572284FFAE0072F994 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -599,7 +809,28 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		0E283E3822850DD200729447 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E283E3422850DD200729447 /* UhereWatch Extension */;
+			targetProxy = 0E283E3722850DD200729447 /* PBXContainerItemProxy */;
+		};
+		0E283E4522850DD200729447 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E283E2822850DD100729447 /* UhereWatch */;
+			targetProxy = 0E283E4422850DD200729447 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		0E283E2B22850DD100729447 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0E283E2C22850DD100729447 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		0E9FF36A2284FFAE0072F994 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -611,6 +842,88 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0E283E4822850DD200729447 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DHFMA3M4H5;
+				INFOPLIST_FILE = "UhereWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tatsu.UhereLast.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Debug;
+		};
+		0E283E4922850DD200729447 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DHFMA3M4H5;
+				INFOPLIST_FILE = "UhereWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tatsu.UhereLast.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Release;
+		};
+		0E283E4C22850DD200729447 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DHFMA3M4H5;
+				IBSC_MODULE = UhereWatch_Extension;
+				INFOPLIST_FILE = UhereWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tatsu.UhereLast.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Debug;
+		};
+		0E283E4D22850DD200729447 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DHFMA3M4H5;
+				IBSC_MODULE = UhereWatch_Extension;
+				INFOPLIST_FILE = UhereWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tatsu.UhereLast.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Release;
+		};
 		0E9FF36E2284FFAE0072F994 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -768,6 +1081,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0E283E4722850DD200729447 /* Build configuration list for PBXNativeTarget "UhereWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E283E4822850DD200729447 /* Debug */,
+				0E283E4922850DD200729447 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0E283E4B22850DD200729447 /* Build configuration list for PBXNativeTarget "UhereWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E283E4C22850DD200729447 /* Debug */,
+				0E283E4D22850DD200729447 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0E9FF3562284FFAE0072F994 /* Build configuration list for PBXProject "UhereLast" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
