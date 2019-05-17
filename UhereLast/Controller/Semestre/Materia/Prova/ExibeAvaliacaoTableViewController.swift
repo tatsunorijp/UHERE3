@@ -16,10 +16,14 @@ class ExibeAvaliacaoTableViewController: UITableViewController {
     @IBOutlet weak var tfData: UITextField!
     @IBOutlet weak var lbAlerta: UILabel!
     @IBOutlet weak var lbMateria: UILabel!
+    
+    @IBOutlet weak var btSwichConcluido: UISwitch!
+    
     var offset: Double = 0.0
     let datePicker = UIDatePicker()
     var avaliacao = Prova()
     var oldId: String = ""
+    var concluido: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +49,7 @@ class ExibeAvaliacaoTableViewController: UITableViewController {
             avaliacao.diaHora = data as NSDate
             avaliacao.alertaOffSet = offset
             avaliacao.offSetString = lbAlerta.text
+            avaliacao.concluido = concluido
             
             if(avaliacao.alertaOffSet >= 0){
                 let newId = Notificacoes.idGenerator(type: "Avaliacoes", materia: avaliacao.materia!.nome!, title: avaliacao.nome!, date: avaliacao.diaHora! as Date)
@@ -86,12 +91,18 @@ class ExibeAvaliacaoTableViewController: UITableViewController {
         lbAlerta.text = avaliacao.offSetString
         offset = avaliacao.alertaOffSet
         lbMateria.textColor =  UIColor.colorWithHexString((avaliacao.materia?.cor)!)
-        
+        btSwichConcluido.isOn = avaliacao.concluido
+        concluido = avaliacao.concluido
         oldId = Notificacoes.idGenerator(type: "Avaliacoes", materia: avaliacao.materia!.nome!, title: avaliacao.nome!, date: avaliacao.diaHora! as Date)
         
         navigationItem.title = avaliacao.nome
 
     }
+    
+    @IBAction func btSwichActionHandler(_ sender: UISwitch) {
+        concluido = sender.isOn
+    }
+    
 }
 
 extension ExibeAvaliacaoTableViewController: AlertaProtocol{

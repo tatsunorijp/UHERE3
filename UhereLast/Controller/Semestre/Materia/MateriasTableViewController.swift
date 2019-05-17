@@ -13,7 +13,7 @@ class MateriasTableViewController: UITableViewController {
     var ids: [String] = []
     var dias: [Bool] = []
     var horas: [Date] = []
-    
+    var mediaAtual: Double = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         Controller.configureTableViewController(view: self)
@@ -53,8 +53,12 @@ class MateriasTableViewController: UITableViewController {
             
             if let countAvaliacoes = materia.rawProvas?.count {
                 cell.lbAvaliacoes.text = String(countAvaliacoes)
+                if (countAvaliacoes > 0){
+                    mediaAtual = calculoDaMedia(provas: materia.provas!)
+                    cell.lbMedia.text = String(mediaAtual)
+                }
             }
-            cell.lbSituacao.text = materia.situacao
+            cell.lbSituacao.text = calculoSituacao(provas: materia.provas!)
             cell.backgroundColor = UIColor(white: 0.95, alpha: 1)
             
         }
@@ -144,6 +148,46 @@ class MateriasTableViewController: UITableViewController {
         horas.append(diasHoras.hQuinta! as Date)
         horas.append(diasHoras.hSexta! as Date)
         horas.append(diasHoras.hSabado! as Date)
+    }
+    
+    func calculoDaMedia(provas: [Prova]) -> Double{
+        var totalNotas: Double = 0
+        var totalPesos: Double = 0
+        for prova in provas{
+            if prova.concluido{
+                totalNotas = totalNotas + (prova.nota * prova.peso)
+                totalPesos = totalPesos + prova.peso
+            }
+        }
+        
+        return totalNotas/totalPesos
+    }
+    
+    func calculoSituacao(provas: [Prova]) -> String{
+        var provasConcluídas: Int = 0
+        for prova in provas{
+            if prova.concluido{
+                provasConcluídas = provasConcluídas + 1
+            }
+        }
+        
+        if provasConcluídas == provas.count{
+            if (mediaAtual >= 60){
+                return "Aprovado"
+            }else{
+                return "Reprovado"
+            }
+        }else if (provasConcluídas - 1 == provas.count){
+            if let ultimaProva = provas.last {
+                let valor = (mediaAtual + ultimaProva.nota * ultimaProva.peso)/ultimaProva.peso+1
+                
+                if (valor < 60){
+                    return "Reprovado"
+                }
+            }
+        }
+        
+        return "Indefinido"
     }
 
 }

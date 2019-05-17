@@ -225,6 +225,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9D4E8BA2DAA434704EFCB8D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -485,9 +492,9 @@
 		0E9FF35D2284FFAE0072F994 /* UhereLast */ = {
 			isa = PBXGroup;
 			children = (
+				0E283D9F228505B400729447 /* Model */,
 				0EA76418228530D0009C4D8F /* View */,
 				0E283DC8228506A100729447 /* Controller */,
-				0E283D9F228505B400729447 /* Model */,
 				0E9FF35E2284FFAE0072F994 /* AppDelegate.swift */,
 				0E9FF37C228501DC0072F994 /* Assets.xcassets */,
 				0E9FF36D2284FFAE0072F994 /* Info.plist */,
@@ -556,6 +563,7 @@
 			buildPhases = (
 				0E283E2722850DD100729447 /* Resources */,
 				0E283E4A22850DD200729447 /* Embed App Extensions */,
+				9D4E8BA2DAA434704EFCB8D0 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -688,6 +696,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-UhereLast/Pods-UhereLast-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ColorPicker/ColorPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -696,6 +706,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ColorPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

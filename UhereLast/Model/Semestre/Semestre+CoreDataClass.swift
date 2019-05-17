@@ -10,6 +10,8 @@
 import Foundation
 import CoreData
 import UIKit
+import RxSwift
+import RxCocoa
 
 @objc(Semestre)
 public class Semestre: NSManagedObject {
@@ -63,4 +65,21 @@ public class Semestre: NSManagedObject {
         
         return []
     }
+    
+    static func getSemestresRx() -> Observable<[Semestre]>{
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        let managedContext = appDelegate!.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Semestre> = Semestre.fetchRequest()
+        
+        do {
+            return try Observable.from(optional: managedContext.fetch(fetchRequest))
+        }catch let erro{
+            print(erro.localizedDescription)
+            print("Erro ao tentar recuperar semestres")
+        }
+        
+        return Observable.from([])
+    }
+    
+    
 }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class ExibeAtividadesTableViewController: UITableViewController {
 
@@ -19,6 +21,7 @@ class ExibeAtividadesTableViewController: UITableViewController {
     @IBOutlet weak var lbAlerta: UILabel!
     @IBOutlet weak var tfLocal: UITextField!
     @IBOutlet weak var tfAnotacao: UITextView!
+    @IBOutlet weak var btSwitchConcluido: UISwitch!
     let datePicker = UIDatePicker()
     var offSet: Double = 0.0
     var selecionado: Bool = true
@@ -26,6 +29,8 @@ class ExibeAtividadesTableViewController: UITableViewController {
     var oldMateria = Materia()
     var newId: String = ""
     var oldId: String = ""
+    var concluido : Bool = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +59,7 @@ class ExibeAtividadesTableViewController: UITableViewController {
             atividade.diaHora = data as NSDate
             atividade.alertaOffSet = offSet
             atividade.offSetString = lbAlerta.text
+            atividade.concluido = concluido
             
             if(selecionado){
                 atividade.cor = materiaSelecionada.cor
@@ -124,7 +130,8 @@ class ExibeAtividadesTableViewController: UITableViewController {
         tfAnotacao.text = atividade.anotacao
         oldMateria = atividade.relationship!
         materiaSelecionada = atividade.relationship!
-        
+        btSwitchConcluido.isOn = atividade.concluido
+        concluido = atividade.concluido
         //GAMBIARRA OU NAO?
         //SEMPRE VAI TER UMA MATERIA SELECIONADA, EXCETO  QUE, SE A COR FOR A DESCRITA ABAIXO, SIGNIFICA QUE A ATIVIDADE
         //NAO TEM VINCULO COM NENHUMA MATERIA, POR ISSO FAZ SE CONTA QUE NAO HÁ, NEM UMA MATERIA SELECIONADA
@@ -137,6 +144,12 @@ class ExibeAtividadesTableViewController: UITableViewController {
         navigationItem.title = atividade.nome
 
     }
+    
+    
+    @IBAction func btSwichConcluidoActionHandler(_ sender: UISwitch) {
+        concluido = sender.isOn
+    }
+    
 }
 
 extension ExibeAtividadesTableViewController: AlertaProtocol{

@@ -2862,10 +2862,45 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Ao marcar como concluído, esta avaliação fará parte do calculo da média" id="c69-Xp-m8P">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellProva" id="Rj2-65-2Ce">
+                                        <rect key="frame" x="0.0" y="385" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rj2-65-2Ce" id="1qG-Sn-cHC">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oaJ-3c-Ajm">
+                                                    <rect key="frame" x="310" y="6" width="51" height="31"/>
+                                                    <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <action selector="btSwichActionHandler:" destination="OuC-Xj-oQh" eventType="valueChanged" id="r32-Hl-wJ0"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Concluído" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ph3-zI-vld">
+                                                    <rect key="frame" x="16" y="12" width="78" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ph3-zI-vld" firstAttribute="top" secondItem="1qG-Sn-cHC" secondAttribute="topMargin" constant="1" id="1K6-Nb-cue"/>
+                                                <constraint firstItem="ph3-zI-vld" firstAttribute="bottom" secondItem="1qG-Sn-cHC" secondAttribute="bottomMargin" id="3tf-u4-7Th"/>
+                                                <constraint firstAttribute="bottom" secondItem="oaJ-3c-Ajm" secondAttribute="bottom" constant="6.6699999999999999" id="8C3-VH-YM8"/>
+                                                <constraint firstAttribute="trailing" secondItem="oaJ-3c-Ajm" secondAttribute="trailing" constant="16" id="G4C-5j-0cx"/>
+                                                <constraint firstItem="oaJ-3c-Ajm" firstAttribute="top" secondItem="1qG-Sn-cHC" secondAttribute="top" constant="6" id="bKe-xj-0oM"/>
+                                                <constraint firstItem="ph3-zI-vld" firstAttribute="leading" secondItem="1qG-Sn-cHC" secondAttribute="leadingMargin" id="iKR-SA-0f2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Materia" id="4tm-L0-SN3">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellProva" textLabel="oFf-3o-cWB" style="IBUITableViewCellStyleDefault" id="JTh-DS-oPn">
-                                        <rect key="frame" x="0.0" y="367" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="485" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JTh-DS-oPn" id="YjS-oV-EAQ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
@@ -2897,6 +2932,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btSwichConcluido" destination="oaJ-3c-Ajm" id="rGM-Zb-UXq"/>
                         <outlet property="lbAlerta" destination="rpA-xq-yDs" id="BXf-bg-a4Y"/>
                         <outlet property="lbMateria" destination="oFf-3o-cWB" id="MwX-IF-kKK"/>
                         <outlet property="tfData" destination="KHt-WV-VTw" id="eAc-Ep-8qg"/>
@@ -3141,12 +3177,43 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="9YO-xg-7wS">
+                                        <rect key="frame" x="0.0" y="427" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9YO-xg-7wS" id="xrx-5Y-hyP">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Concluído" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mag-hU-rHT">
+                                                    <rect key="frame" x="16" y="11" width="77.333333333333329" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jwe-ja-dXH">
+                                                    <rect key="frame" x="308" y="6" width="51" height="31"/>
+                                                    <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <action selector="btSwichConcluidoActionHandler:" destination="cdZ-V4-hYb" eventType="valueChanged" id="7Qg-8x-VAe"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jwe-ja-dXH" firstAttribute="top" secondItem="xrx-5Y-hyP" secondAttribute="top" constant="6" id="22Z-bi-MbK"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="mag-hU-rHT" secondAttribute="bottom" constant="1" id="9Rb-Jh-d06"/>
+                                                <constraint firstItem="mag-hU-rHT" firstAttribute="leading" secondItem="xrx-5Y-hyP" secondAttribute="leadingMargin" id="DAK-dF-h5v"/>
+                                                <constraint firstAttribute="trailing" secondItem="jwe-ja-dXH" secondAttribute="trailing" constant="18" id="H4A-BK-fLw"/>
+                                                <constraint firstItem="mag-hU-rHT" firstAttribute="top" secondItem="xrx-5Y-hyP" secondAttribute="topMargin" id="joS-sb-mZ1"/>
+                                                <constraint firstAttribute="bottom" secondItem="jwe-ja-dXH" secondAttribute="bottom" constant="6.6699999999999999" id="u08-2x-N1f"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Anotação" id="MjI-D0-bQ9">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="158" id="FN8-Ux-jFt">
-                                        <rect key="frame" x="0.0" y="483" width="375" height="158"/>
+                                        <rect key="frame" x="0.0" y="527" width="375" height="158"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FN8-Ux-jFt" id="mQQ-Cw-ekf">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="157.66666666666666"/>
@@ -3180,6 +3247,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="btSwitchConcluido" destination="jwe-ja-dXH" id="0vI-4E-UqO"/>
                         <outlet property="lbAlerta" destination="9NX-8j-TIQ" id="M3s-I1-yUC"/>
                         <outlet property="lbData" destination="M5U-4Z-GJr" id="JZJ-FO-9Lw"/>
                         <outlet property="lbDisciplina" destination="ngw-fM-Zla" id="6bl-Q9-p5f"/>
@@ -3511,6 +3579,6 @@
         <segue reference="ugH-eN-yav"/>
         <segue reference="xY8-kD-Utf"/>
         <segue reference="5gJ-Xc-gm2"/>
-        <segue reference="jT0-io-Y5f"/>
+        <segue reference="AKP-e1-No7"/>
     </inferredMetricsTieBreakers>
 </document>

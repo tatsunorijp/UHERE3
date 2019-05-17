@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import RxSwift
+import RxCocoa
 
 class AtividadesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,6 +18,7 @@ class AtividadesViewController: UIViewController, UITableViewDelegate, UITableVi
     var materias: [Materia] = []
     var id: String = ""
     var segmentedControlValue: Int = 0
+    var atividadesBehavior = BehaviorRelay<[Atividade]>(value:[])
 
     struct atividadesStruct{
         var sectionName: String!
@@ -67,6 +70,8 @@ class AtividadesViewController: UIViewController, UITableViewDelegate, UITableVi
             
         }
         
+        
+        
         if((materiaIndefinida?.atividades?.count)! > 0){
             materias.append(materiaIndefinida!)
         }
@@ -87,12 +92,18 @@ class AtividadesViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
         
+        Atividade.getAtividadesRx()
+            .subscribe(onNext: { atividades in
+                self.atividadesBehavior.accept(atividades)
+            }).disposed(by: DisposeBag())
+                
+        
     }
     
     func loadDataToShow(){
         var localAtividades: [Atividade] = []
         
-        if (materias.count > 0){
+        /*if (materias.count > 0){
             for i in 0...materias.count-1{
                 let atividadesCount = materias[i].atividades?.count
                 
@@ -119,7 +130,34 @@ class AtividadesViewController: UIViewController, UITableViewDelegate, UITableVi
                     }
                 }
             }
+        }*/
+        
+        if segmentedControlValue == 1{
+            for materia in materias{
+                for atividade in materia.atividades!{
+                    if(!atividade.concluido){
+                        localAtividades.append(atividade)
+                    }
+                }
+                if(localAtividades.count > 0){
+                    atividadesToShow.append(atividadesStruct.init(sectionName: materia.nome, atividades: localAtividades))
+                    localAtividades = []
+                }
+            }
+        }else {
+            for materia in materias{
+                for atividade in materia.atividades!{
+                    if(atividade.concluido){
+                        localAtividades.append(atividade)
+                    }
+                }
+                if(localAtividades.count > 0){
+                    atividadesToShow.append(atividadesStruct.init(sectionName: materia.nome, atividades: localAtividades))
+                    localAtividades = []
+                }
+            }
         }
+    
 
     }
     
@@ -145,7 +183,7 @@ class AtividadesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "atividadeCell", for: indexPath) as! AtividadeCell
-        var atividade = Atividade()
+        /*var atividade = Atividade()
         
         switch segmentedControlValue {
         case 1:
@@ -167,6 +205,8 @@ class AtividadesViewController: UIViewController, UITableViewDelegate, UITableVi
                 
         }
         cell.backgroundColor = UIColor(white: 0.95, alpha: 1)
+        */
+        
 
         return cell
     }

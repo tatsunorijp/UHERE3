@@ -8,11 +8,15 @@
 
 import UIKit
 import CoreData
+import RxCocoa
+import RxSwift
 
 class AtividadesTableViewController: UITableViewController{
     var semestres: [NSManagedObject] = []
     var materias: [Materia] = []
     var id: String = ""
+    var atividadesBehavior = BehaviorRelay<[Atividade]>(value: [])
+
     //var atividadesIndefinidas: [Atividade] = []
 
 
@@ -80,6 +84,11 @@ class AtividadesTableViewController: UITableViewController{
                 }
             }
         }
+        
+        Atividade.getAtividadesRx()
+            .subscribe(onNext: { (atividade) in
+                self.atividadesBehavior.accept(atividade)
+            }).disposed(by: DisposeBag())
         
     }
     

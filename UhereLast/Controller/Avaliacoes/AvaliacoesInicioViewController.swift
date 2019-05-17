@@ -12,7 +12,6 @@ import CoreData
 class AvaliacoesInicioViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var semestres: [NSManagedObject] = []
-    //var avaliacoes: [Prova] = []
     var materias: [Materia] = []
     var segmentedControlValue: Int = 0
     
@@ -155,7 +154,7 @@ class AvaliacoesInicioViewController: UIViewController, UITableViewDelegate, UIT
     func loadDataToShow(){
         var localProvas: [Prova] = []
         
-        if(materias.count > 0){
+        /*if(materias.count > 0){
             for i in 0...materias.count-1{
                 let provasCount = materias[i].provas?.count
                 
@@ -183,7 +182,35 @@ class AvaliacoesInicioViewController: UIViewController, UITableViewDelegate, UIT
                 }
                 
             }
+        }*/
+        
+        if (segmentedControlValue == 1){
+            for materia in materias{
+                for prova in materia.provas!{
+                    if (!prova.concluido){
+                        localProvas.append(prova)
+                    }
+                }
+                if(localProvas.count > 0){
+                    provasToShow.append(structProvas.init(sectionName: materia.nome, provas: localProvas))
+                    localProvas = []
+                }
+            }
+        }else{
+            for materia in materias{
+                for prova in materia.provas!{
+                    if (prova.concluido){
+                        localProvas.append(prova)
+                    }
+                }
+                if(localProvas.count > 0){
+                    provasToShow.append(structProvas.init(sectionName: materia.nome, provas: localProvas))
+                    localProvas = []
+                }
+            }
         }
+        
+        
 
     }
     

@@ -3,6 +3,7 @@
     <entity name="Atividade" representedClassName="Atividade" syncable="YES">
         <attribute name="alertaOffSet" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="anotacao" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="concluido" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="cor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="diaHora" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="local" optional="YES" attributeType="String" syncable="YES"/>
@@ -54,6 +55,7 @@
     </entity>
     <entity name="Prova" representedClassName="Prova" syncable="YES">
         <attribute name="alertaOffSet" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="concluido" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="diaHora" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nota" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -68,11 +70,11 @@
         <relationship name="rawMaterias" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Materia" inverseName="semestre" inverseEntity="Materia" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Atividade" positionX="-54" positionY="81" width="128" height="210"/>
+        <element name="Atividade" positionX="-54" positionY="81" width="128" height="225"/>
         <element name="DiasHoras" positionX="-54" positionY="126" width="128" height="270"/>
-        <element name="Materia" positionX="-63" positionY="-18" width="128" height="285"/>
-        <element name="Prova" positionX="-36" positionY="81" width="128" height="150"/>
-        <element name="Semestre" positionX="-54" positionY="-9" width="128" height="105"/>
         <element name="Falta" positionX="-54" positionY="135" width="128" height="75"/>
+        <element name="Materia" positionX="-63" positionY="-18" width="128" height="285"/>
+        <element name="Prova" positionX="-36" positionY="81" width="128" height="165"/>
+        <element name="Semestre" positionX="-54" positionY="-9" width="128" height="105"/>
     </elements>
 </model>

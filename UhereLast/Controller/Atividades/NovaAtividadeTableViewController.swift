@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class NovaAtividadeTableViewController: UITableViewController {
 
@@ -83,7 +84,16 @@ class NovaAtividadeTableViewController: UITableViewController {
             destino.selecionarDisciplinaProtocol = self
         }else if (segue.identifier == "selecionarAlerta"){
             let destino = segue.destination as! AlertaTableViewController
-            destino.alertaProtocol = self
+            //destino.alertaProtocol = self
+            destino.valueObservable
+                .subscribe(onNext: { [unowned self] (valor) in
+                    self.lbAlerta.text = valor.string
+                    self.offSetSelecionado = valor.offSet
+                    print("Dentro do sobscribe")
+                    print(valor.string)
+                }).disposed(by: DisposeBag())
+            
+            
         }else if (segue.identifier == "selecionarTipo"){
             let destino = segue.destination as! TipoAtividadeTableViewController
             destino.tipoAtividadeProtocol = self
@@ -145,12 +155,12 @@ extension NovaAtividadeTableViewController: SelecionarDisciplinaProtocol{
     
 }
 
-extension NovaAtividadeTableViewController: AlertaProtocol{
+/*extension NovaAtividadeTableViewController: AlertaProtocol{
     func relativeOffSet(offSet: Double, string: String) {
         lbAlerta.text = string
         offSetSelecionado = offSet
     }
-}
+}*/
 
 extension NovaAtividadeTableViewController: TipoAtividadeProtocol{
     func tipoAtividade(tipo: String) {
