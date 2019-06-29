@@ -8,12 +8,9 @@
 
 import UIKit
 import CoreData
-import RxSwift
-import RxCocoa
 
 class SemestresTableViewController: UITableViewController{
     var semestres: [NSManagedObject] = []
-    var semestresRx = BehaviorRelay<[Semestre]>(value:[])
     var indexToEdit: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +19,7 @@ class SemestresTableViewController: UITableViewController{
     }
     override func viewDidAppear(_ animated: Bool) {
         semestres = Semestre.getSemestres()
-        
-        Semestre.getSemestresRx().subscribe(onNext: { (semestreRx) in
-            self.semestresRx.accept(semestreRx)
-        }).disposed(by: DisposeBag())
+
         
         tableView.reloadData()
         indexToEdit = nil
@@ -106,7 +100,7 @@ class SemestresTableViewController: UITableViewController{
                 return
             }
             if (indexToEdit != nil){
-                destination.semestre = semestres[indexToEdit!] as! Semestre
+                destination.semestre = semestres[indexToEdit!] as? Semestre
                 destination.edit = indexToEdit
             }
             

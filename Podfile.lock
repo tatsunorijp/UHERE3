@@ -1,33 +1,24 @@
 PODS:
   - ColorPicker (0.1.2)
   - JTAppleCalendar (7.1.7)
-  - RxCocoa (4.5.0):
-    - RxSwift (>= 4.4.2, ~> 4.4)
-  - RxSwift (4.5.0)
   - SkyFloatingLabelTextField (3.6.0)
 
 DEPENDENCIES:
   - ColorPicker
   - JTAppleCalendar (~> 7.1.7)
-  - RxCocoa (~> 4.5)
-  - RxSwift (~> 4.5)
   - SkyFloatingLabelTextField (~> 3.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ColorPicker
     - JTAppleCalendar
-    - RxCocoa
-    - RxSwift
     - SkyFloatingLabelTextField
 
 SPEC CHECKSUMS:
   ColorPicker: 4c9509876f05e41478bb8ecca0046ef1b8f5c84f
   JTAppleCalendar: 96da4d8388fa6dc82d6a60d41ef36a015e167e2f
-  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
-  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SkyFloatingLabelTextField: 38164979b79512f9ff9288ad8acfc4bbf5d843e3
 
-PODFILE CHECKSUM: 63d1b0bbe5ded935a73876cf6e2b0125a1e96ff6
+PODFILE CHECKSUM: 2a0a91a0fc8f4a8029d4e073cb9a137268cc9d30
 
 COCOAPODS: 1.5.3

@@ -17,7 +17,7 @@ public extension UIColor {
         return CGFloat(subString) / 255
     }
     
-    public static func colorWithHexString(_ hex: String) -> UIColor? {
+    static func colorWithHexString(_ hex: String) -> UIColor? {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if (cString.hasPrefix("#")) {
@@ -43,7 +43,7 @@ public extension UIColor {
         )
     }
     
-    public func hexString() -> String {
+    func hexString() -> String {
         var r: CGFloat = 0
         var g: CGFloat = 0
         var b: CGFloat = 0

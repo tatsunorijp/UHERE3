@@ -10,7 +10,4 @@ target 'UhereLast' do
 pod "ColorPicker"
 pod 'JTAppleCalendar', '~> 7.1.7'
 pod 'SkyFloatingLabelTextField', '~> 3.0'
-pod 'RxSwift','~> 4.5'
-pod 'RxCocoa','~> 4.5'
-
 end

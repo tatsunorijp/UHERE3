@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RxSwift
 
 protocol AlertaProtocol{
     func relativeOffSet(offSet: Double, string: String)
@@ -20,13 +19,7 @@ struct Valor{
 
 class AlertaTableViewController: UITableViewController {
     var alertaProtocol: AlertaProtocol?
-    
-    let valueSubject = PublishSubject<Valor>()
-    
-    var valueObservable: Observable<Valor> {
-        return valueSubject.asObservable()
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -60,7 +53,6 @@ class AlertaTableViewController: UITableViewController {
             alertaProtocol?.relativeOffSet(offSet: 60*24*7, string: "1 semana antes")
         }
         print(valor.string)
-        valueSubject.onNext(valor)
         self.navigationController?.popViewController(animated: true)
     }
 

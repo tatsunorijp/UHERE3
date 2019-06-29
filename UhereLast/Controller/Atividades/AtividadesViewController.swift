@@ -8,8 +8,6 @@
 
 import UIKit
 import CoreData
-import RxSwift
-import RxCocoa
 
 class AtividadesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -18,7 +16,6 @@ class AtividadesViewController: UIViewController, UITableViewDelegate, UITableVi
     var materias: [Materia] = []
     var id: String = ""
     var segmentedControlValue: Int = 0
-    var atividadesBehavior = BehaviorRelay<[Atividade]>(value:[])
 
     struct atividadesStruct{
         var sectionName: String!
@@ -91,11 +88,7 @@ class AtividadesViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             }
         }
-        
-        Atividade.getAtividadesRx()
-            .subscribe(onNext: { atividades in
-                self.atividadesBehavior.accept(atividades)
-            }).disposed(by: DisposeBag())
+
                 
         
     }

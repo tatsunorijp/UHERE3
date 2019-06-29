@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 import UIKit
-import RxSwift
 
 @objc(Atividade)
 public class Atividade: NSManagedObject {
@@ -106,22 +105,6 @@ public class Atividade: NSManagedObject {
         }
         
         return []
-    }
-    
-    static func getAtividadesRx() -> Observable<[Atividade]>{
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        let managedContext = appDelegate!.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<Atividade> = Atividade.fetchRequest()
-        let atividades = PublishSubject<[Atividade]>()
-        
-        do {
-                try atividades.onNext(managedContext.fetch(fetchRequest))
-                return atividades.asObserver()
-        }catch let erro{
-            print(erro.localizedDescription)
-            print("Erro ao tentar recuperar atividades")
-        }
-        return Observable<[Atividade]>.of([])
     }
     
 }
