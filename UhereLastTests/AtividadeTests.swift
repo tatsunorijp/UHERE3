@@ -20,25 +20,19 @@ class AtividadeTests: XCTestCase {
 
     override func tearDown() {
     }
-
-    func testPerformanceExample() {
-        self.measure {
-        }
-    }
     
     func test_initSaveDeleteAtividade() {
+        let initialQuantity = Atividade.getAtividades().count
         let newAtividade = Atividade.init(nome: "atividade de test", tipo: "reuniao", data: Date(), alertaOffSet: 5.0, local: "none", anotacao: "none", cor: "FFFFFF", offSetString: "5 double")
         XCTAssertNotNil(newAtividade)
 
-        let quantityAtividadesBeforeSave = Atividade.getAtividades().count
         Atividade.save(atividade: newAtividade!)
-        let quantityAtividadesAfterSave = Atividade.getAtividades().count
-        XCTAssertEqual(quantityAtividadesBeforeSave, quantityAtividadesAfterSave - 1)
+        let quantityAfterSave = Atividade.getAtividades().count
+        XCTAssertEqual(initialQuantity, quantityAfterSave - 1)
         
-        let quantityAtividadesBeforDelete = Atividade.getAtividades().count
         Atividade.delete(atividade: newAtividade!)
-        let quantityAtividadesAfterDelete = Atividade.getAtividades().count
-        XCTAssertEqual(quantityAtividadesBeforDelete, quantityAtividadesAfterDelete + 1)
+        let quantityAfterDelete = Atividade.getAtividades().count
+        XCTAssertEqual(initialQuantity, quantityAfterDelete)
     }
     
     func test_getAtividadeWithoutMateria() {
