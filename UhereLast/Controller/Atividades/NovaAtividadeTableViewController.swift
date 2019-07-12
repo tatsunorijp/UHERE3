@@ -10,11 +10,10 @@ import UIKit
 
 class NovaAtividadeTableViewController: UITableViewController {
 
-    
     @IBOutlet weak var tfTitulo: UITextField!
     @IBOutlet weak var lbDisciplina: UILabel!
     @IBOutlet weak var lbTipo: UILabel!
-    @IBOutlet weak var tfData: UITextField!
+    @IBOutlet weak var tfData: DateTextField!
     @IBOutlet weak var lbAlerta: UILabel!
     @IBOutlet weak var tfLocal: UITextField!
     @IBOutlet weak var tfAnotacao: UITextView!
@@ -30,7 +29,6 @@ class NovaAtividadeTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        Controller.dateTimeFormat()
     }
 
     @IBAction func novaAtividade(_ sender: Any) {
@@ -38,15 +36,14 @@ class NovaAtividadeTableViewController: UITableViewController {
         if((tfTitulo.text?.isEmpty)! || (tfData.text?.isEmpty)!){
             Controller.alertaContinuar(titulo: Controller.tituloCampo, menssagem: Controller.menssagemCampo, vc: self)
         }else{
-            Controller.dateTimeFormat()
             guard let nome = tfTitulo.text,
                 let tipo = lbTipo.text,
                 let local = tfLocal.text,
-                let anotacao = tfAnotacao.text,
-                let data = Controller.dateFormatter.date(from: tfData.text!)  else {
+                let anotacao = tfAnotacao.text  else {
                     print("Erro nos let de atividades")
                     return
             }
+            let data = tfData.date
             
             if(selecionado){
                 if let atividade = Atividade.init(nome: nome, tipo: tipo, data: data, alertaOffSet: offSetSelecionado, local: local, anotacao: anotacao, cor: materiaSelecionada.cor!, offSetString: lbAlerta.text!){
@@ -68,15 +65,8 @@ class NovaAtividadeTableViewController: UITableViewController {
             }
             self.navigationController?.popViewController(animated: true)
         }
-            
-        
-
-        
     }
     
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "selecionarDisciplina") {
             let destino = segue.destination as! SelecionarDisciplinaTableViewController
@@ -92,21 +82,11 @@ class NovaAtividadeTableViewController: UITableViewController {
     }
     
     func loadFunctions(){
-        datePicker.datePickerMode = .dateAndTime
-        tfData.inputView = datePicker
-        datePicker.addTarget(self, action: #selector (self.dateChanged(datePicker:)), for: .valueChanged)
-        Controller.dateTimeFormat()
+        tfData.setConfig(format: Constants.dateTimeFormat, mode: .dateAndTime)
         materiaSelecionada = Materia.init(nome: "Indefinido", local: "indefinido", professor: "indefinido", limiteFaltas: 0, faltas: 0, cor: "AAABAA", offSet: 0, offSetString:"Desativado")!
         
-        //tfData.text = Controller.dateFormatter.string(from: datePicker.date)
         tableView.keyboardDismissMode = .onDrag
-
     }
-    
-    /*@objc func addGesture(textField: UITextField){
-        let cliqueView = UITapGestureRecognizer(target: self, action: #selector(self.viewclicada(reconhecedorGesto:)))
-        view.addGestureRecognizer(cliqueView)
-    }*/
     
     @objc func dateChanged(datePicker: UIDatePicker){
         tfData.text = Controller.dateFormatter.string(from: datePicker.date)
@@ -144,13 +124,6 @@ extension NovaAtividadeTableViewController: SelecionarDisciplinaProtocol{
     }
     
 }
-
-/*extension NovaAtividadeTableViewController: AlertaProtocol{
-    func relativeOffSet(offSet: Double, string: String) {
-        lbAlerta.text = string
-        offSetSelecionado = offSet
-    }
-}*/
 
 extension NovaAtividadeTableViewController: TipoAtividadeProtocol{
     func tipoAtividade(tipo: String) {

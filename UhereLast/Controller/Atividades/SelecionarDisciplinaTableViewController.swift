@@ -5,7 +5,6 @@
 //  Created by Wellington Tatsunori Asahide on 11/11/18.
 //  Copyright © 2018 tatsu. All rights reserved.
 //
-
 import UIKit
 import CoreData
 
@@ -30,12 +29,12 @@ class SelecionarDisciplinaTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return semestres.count
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let semestre = semestres[section]
         return semestre.materias?.count ?? 0
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "disciplinaCell", for: indexPath)
@@ -66,7 +65,7 @@ class SelecionarDisciplinaTableViewController: UITableViewController {
             self.navigationController?.popViewController(animated: true)
         }
     }
- 
+    
     
     func loadData(){
         let semestreAll = Semestre.getSemestres()
@@ -79,8 +78,7 @@ class SelecionarDisciplinaTableViewController: UITableViewController {
                 semestres.append(aux)
             }
         }
-    }
-    
+}
     func semestreIndefinido() -> Semestre{
         Controller.dateFormat()
         let date = Controller.dateFormatter.date(from: "01/01/2000")
@@ -94,5 +92,5 @@ class SelecionarDisciplinaTableViewController: UITableViewController {
     func excluiSemestreIndefinido(semestre: Semestre){
         semestre.managedObjectContext?.delete(semestre)
     }
-
+    
 }

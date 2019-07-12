@@ -9,13 +9,13 @@
 import UIKit
 import CoreData
 
-class AvaliacoesInicioViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AvaliacoesInicioViewController: ViewController, UITableViewDelegate, UITableViewDataSource {
 
     var semestres: [NSManagedObject] = []
     var materias: [Materia] = []
     var segmentedControlValue: Int = 0
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: TableView!
     
     struct structProvas{
         var sectionName: String!
@@ -26,20 +26,19 @@ class AvaliacoesInicioViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Controller.configureTableView(tableView: tableView)
-        navigationController?.navigationBar.prefersLargeTitles = true
-
-        //Controller.configureTableView(view: self)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         loadFunctions()
         tableView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         semestres.removeAll()
-        //avaliacoes.removeAll()
         materias.removeAll()
     }
     
@@ -69,8 +68,6 @@ class AvaliacoesInicioViewController: UIViewController, UITableViewDelegate, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "avaliacoesCell", for: indexPath) as! AvaliacoesInicioCell
         var prova = Prova()
         
-        
-        
         if (segmentedControlValue != 0){
             prova = provasToShow[indexPath.section].provas[indexPath.row]
         }else{
@@ -81,8 +78,6 @@ class AvaliacoesInicioViewController: UIViewController, UITableViewDelegate, UIT
         cell.lbNota.text = String(prova.nota)
         cell.colorView.backgroundColor = UIColor.colorWithHexString((prova.materia?.cor)!)
         cell.lbData.text = Controller.dateFormatter.string(from: prova.diaHora! as Date)
-        cell.backgroundColor = UIColor(white: 0.95, alpha: 1)
-        
         
         return cell
     }
@@ -153,37 +148,6 @@ class AvaliacoesInicioViewController: UIViewController, UITableViewDelegate, UIT
     
     func loadDataToShow(){
         var localProvas: [Prova] = []
-        
-        /*if(materias.count > 0){
-            for i in 0...materias.count-1{
-                let provasCount = materias[i].provas?.count
-                
-                if(provasCount! > 0){
-                    for j in 0...provasCount! - 1{
-                        let prova = materias[i].provas![j]
-                        
-                        switch segmentedControlValue{
-                        case 1:
-                            if(biggerThenToday(date: prova.diaHora! as Date)){
-                                localProvas.append(prova)
-                            }
-                        case 2:
-                            if(!biggerThenToday(date: prova.diaHora! as Date)){
-                                localProvas.append(prova)
-                            }
-                        default:
-                            break
-                        }
-                    }
-                    if(localProvas.count > 0){
-                        provasToShow.append(structProvas.init(sectionName: materias[i].nome, provas: localProvas))
-                        localProvas = []
-                    }
-                }
-                
-            }
-        }*/
-        
         if (segmentedControlValue == 1){
             for materia in materias{
                 for prova in materia.provas!{
@@ -209,9 +173,6 @@ class AvaliacoesInicioViewController: UIViewController, UITableViewDelegate, UIT
                 }
             }
         }
-        
-        
-
     }
     
     func biggerThenToday(date: Date) -> Bool{
@@ -229,7 +190,6 @@ class AvaliacoesInicioViewController: UIViewController, UITableViewDelegate, UIT
         return false
     }
     
-    
     @IBAction func btSegmentedControlAction(_ sender: UISegmentedControl) {
         segmentedControlValue = sender.selectedSegmentIndex
         
@@ -240,7 +200,6 @@ class AvaliacoesInicioViewController: UIViewController, UITableViewDelegate, UIT
         }else{
             tableView.reloadData()
         }
-        
         
     }
     
@@ -253,5 +212,4 @@ class AvaliacoesInicioViewController: UIViewController, UITableViewDelegate, UIT
             destination.avaliacao = materias[(tableView.indexPathForSelectedRow?.section)!].provas![(tableView.indexPathForSelectedRow?.row)!]
         }
     }
-
 }

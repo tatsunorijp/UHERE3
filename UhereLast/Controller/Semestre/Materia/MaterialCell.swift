@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MateriaCell: UITableViewCell{
+class MateriaCell: PatterDesignCell {
     
     @IBOutlet weak var lbNome: UILabel!
     @IBOutlet weak var viewColor: UIView!
@@ -18,5 +18,4 @@ class MateriaCell: UITableViewCell{
     @IBOutlet weak var lbAvaliacoes: UILabel!
     @IBOutlet weak var lbMedia: UILabel!
     @IBOutlet weak var lbSituacao: UILabel!
-    
 }

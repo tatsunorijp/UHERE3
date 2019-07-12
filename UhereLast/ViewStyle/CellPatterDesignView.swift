@@ -1,14 +1,16 @@
 //
-//  DesignCellSemestre.swift
+//  DesignCellMateria.swift
 //  UHere_Prototype
 //
-//  Created by Wellington Tatsunori Asahide on 14/11/18.
+//  Created by Wellington Tatsunori Asahide on 15/11/18.
 //  Copyright © 2018 tatsu. All rights reserved.
 //
 
 import UIKit
 
-@IBDesignable class DesignCellSemestre: UIView {
+import UIKit
+
+@IBDesignable class CellPatterDesignView: UIView {
     
     @IBInspectable var cornerRadius: CGFloat = 3
     @IBInspectable var shadowColor: UIColor = UIColor.black
@@ -25,5 +27,5 @@ import UIKit
         layer.shadowPath = shadowPath.cgPath
         layer.shadowOpacity = shadowOpacity
     }
-
+    
 }

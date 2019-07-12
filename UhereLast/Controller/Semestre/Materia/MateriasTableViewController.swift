@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MateriasTableViewController: UITableViewController {
+class MateriasTableViewController: TableViewController {
     var semestre: Semestre?
     var ids: [String] = []
     var dias: [Bool] = []
@@ -16,7 +16,6 @@ class MateriasTableViewController: UITableViewController {
     var mediaAtual: Double = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        Controller.configureTableViewController(view: self)
     }
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
@@ -42,7 +41,6 @@ class MateriasTableViewController: UITableViewController {
         if let materia = semestre?.materias?[indexPath.row] {
             cell.lbNome.text = materia.nome
             cell.viewColor.backgroundColor = UIColor.colorWithHexString(materia.cor!)
-            cell.contentView.backgroundColor = UIColor(white: 0.95, alpha: 1)
             
             cell.lbFaltas.text = String(materia.faltas)
             if let faltas = materia.falta?.count{
@@ -58,9 +56,7 @@ class MateriasTableViewController: UITableViewController {
                     cell.lbMedia.text = String(mediaAtual)
                 }
             }
-            cell.lbSituacao.text = calculoSituacao(provas: materia.provas!)
-            cell.backgroundColor = UIColor(white: 0.95, alpha: 1)
-            
+            cell.lbSituacao.text = calculoSituacao(provas: materia.provas!)            
         }
         
         return cell

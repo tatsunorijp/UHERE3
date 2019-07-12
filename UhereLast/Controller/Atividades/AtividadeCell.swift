@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AtividadeCell: UITableViewCell {
+class AtividadeCell: PatterDesignCell {
 
     @IBOutlet weak var lbNome: UILabel!
     @IBOutlet weak var lbData: UILabel!

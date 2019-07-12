@@ -87,4 +87,16 @@ public class Materia: NSManagedObject {
         
         return []
     }
+    
+    static func getMateriasWithAtividades() -> [Materia] {
+        let materias = getMaterias() as! [Materia]
+        var materiasWithAtividade: [Materia] = []
+        
+        for materia in materias {
+            if materia.atividades?.count ?? 0 > 0 {
+                materiasWithAtividade.append(materia)
+            }
+        }
+        return materiasWithAtividade
+    }
 }

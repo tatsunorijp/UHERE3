@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -132,7 +131,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kGC-ma-q9z" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*Dia e Hora" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kGC-ma-q9z" customClass="DateTextField" customModule="UhereLast" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="0.0" width="343" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="gB9-Ft-1Xd"/>
@@ -596,7 +595,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3jS-bp-Yo9">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3jS-bp-Yo9" customClass="SegmentedControl" customModule="UhereLast" customModuleProvider="target">
                                 <rect key="frame" x="64" y="0.0" width="247" height="29"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
@@ -604,12 +603,11 @@
                                     <segment title="Pendentes"/>
                                     <segment title="Concluídos"/>
                                 </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="btSegmentedControlAction:" destination="niG-6R-hgK" eventType="valueChanged" id="o7K-iL-Mur"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="HWd-PP-GX8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="HWd-PP-GX8" customClass="TableView" customModule="UhereLast" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="375" height="597"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -620,7 +618,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="129.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZQ-WE-tj7" customClass="CellDesign" customModule="UhereLast" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NZQ-WE-tj7" customClass="CellPatterDesignView" customModule="UhereLast" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="8.0000000000000071" width="318" height="113.66666666666669"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s83-WW-fCu">
@@ -718,7 +716,6 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="HWd-PP-GX8" firstAttribute="top" secondItem="3jS-bp-Yo9" secondAttribute="bottom" constant="16" id="1uR-N1-5lf"/>
                             <constraint firstItem="HWd-PP-GX8" firstAttribute="trailing" secondItem="buU-a2-lLN" secondAttribute="trailing" id="4fQ-Ac-GdW"/>
@@ -746,10 +743,10 @@
             </objects>
             <point key="canvasLocation" x="73" y="-418"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar Controller Swift-->
         <scene sceneID="ydc-Qt-hrx">
             <objects>
-                <tabBarController id="q9j-LZ-TVk" sceneMemberID="viewController">
+                <tabBarController id="q9j-LZ-TVk" customClass="TabBarControllerSwift" customModule="UhereLast" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="uGe-ww-Db1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -872,7 +869,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="99.666666666666671"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tKy-IY-pkB" customClass="CellDesign" customModule="UhereLast" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tKy-IY-pkB" customClass="CellPatterDesignView" customModule="UhereLast" customModuleProvider="target">
                                                             <rect key="frame" x="8" y="8" width="359" height="83.666666666666671"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="YFW-Uq-R6h">
@@ -1076,7 +1073,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="149.66666666666666"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRL-Lm-uxQ" customClass="CellDesign" customModule="UhereLast" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRL-Lm-uxQ" customClass="CellPatterDesignView" customModule="UhereLast" customModuleProvider="target">
                                             <rect key="frame" x="16" y="8" width="317" height="133.66666666666666"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FTR-1L-Q8e">
@@ -1217,26 +1214,26 @@
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="168.66666666666666"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K4i-qm-FDh" customClass="CellDesign" customModule="UhereLast" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K4i-qm-FDh" customClass="CellPatterDesignView" customModule="UhereLast" customModuleProvider="target">
                                             <rect key="frame" x="16" y="11" width="317" height="147"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rJ-vq-hVI" customClass="DesignColorCell" customModule="UhereLast" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="43" height="147"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="147"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faltas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcF-Vj-vDC">
-                                                            <rect key="frame" x="6" y="106.66666666666667" width="31" height="13.333333333333329"/>
+                                                            <rect key="frame" x="4.6666666666666679" y="102" width="31.000000000000004" height="13.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00/00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UlK-9u-V0Y">
-                                                            <rect key="frame" x="3" y="123.33333333333336" width="37" height="15.666666666666671"/>
+                                                            <rect key="frame" x="1.6666666666666679" y="123.33333333333336" width="37" height="15.666666666666671"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tju-uv-Mov">
-                                                            <rect key="frame" x="9" y="30" width="25" height="24"/>
+                                                            <rect key="frame" x="7.6666666666666679" y="16" width="25.000000000000004" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -1244,16 +1241,13 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="UlK-9u-V0Y" secondAttribute="trailing" constant="3" id="769-dR-AoX"/>
-                                                        <constraint firstAttribute="trailing" secondItem="tju-uv-Mov" secondAttribute="trailing" constant="9" id="8i3-KE-aWh"/>
-                                                        <constraint firstItem="UlK-9u-V0Y" firstAttribute="leading" secondItem="1rJ-vq-hVI" secondAttribute="leading" constant="3" id="C04-J4-d2m"/>
-                                                        <constraint firstAttribute="height" constant="147" id="MNz-Uc-uJ0"/>
-                                                        <constraint firstAttribute="trailing" secondItem="GcF-Vj-vDC" secondAttribute="trailing" constant="6" id="PiM-uu-FrL"/>
-                                                        <constraint firstAttribute="bottom" secondItem="UlK-9u-V0Y" secondAttribute="bottom" constant="8" id="Wfn-ph-jWd"/>
-                                                        <constraint firstItem="GcF-Vj-vDC" firstAttribute="leading" secondItem="1rJ-vq-hVI" secondAttribute="leading" constant="6" id="ZAK-ms-qTG"/>
-                                                        <constraint firstItem="UlK-9u-V0Y" firstAttribute="top" secondItem="GcF-Vj-vDC" secondAttribute="bottom" constant="3.3300000000000001" id="cTd-ar-juw"/>
-                                                        <constraint firstItem="tju-uv-Mov" firstAttribute="top" secondItem="1rJ-vq-hVI" secondAttribute="top" constant="30" id="mEq-O6-uFL"/>
-                                                        <constraint firstItem="tju-uv-Mov" firstAttribute="leading" secondItem="1rJ-vq-hVI" secondAttribute="leading" constant="9" id="nTh-jf-Q0j"/>
+                                                        <constraint firstAttribute="bottom" secondItem="UlK-9u-V0Y" secondAttribute="bottom" constant="8" id="YPC-a0-W2v"/>
+                                                        <constraint firstItem="UlK-9u-V0Y" firstAttribute="centerX" secondItem="GcF-Vj-vDC" secondAttribute="centerX" id="aQv-EZ-cD8"/>
+                                                        <constraint firstAttribute="width" constant="40" id="cDh-d2-5Rg"/>
+                                                        <constraint firstItem="tju-uv-Mov" firstAttribute="centerX" secondItem="1rJ-vq-hVI" secondAttribute="centerX" id="i1W-Po-3CY"/>
+                                                        <constraint firstItem="GcF-Vj-vDC" firstAttribute="centerX" secondItem="tju-uv-Mov" secondAttribute="centerX" id="l6T-vo-KKX"/>
+                                                        <constraint firstItem="UlK-9u-V0Y" firstAttribute="top" secondItem="GcF-Vj-vDC" secondAttribute="bottom" constant="8" id="q02-U2-g2k"/>
+                                                        <constraint firstItem="tju-uv-Mov" firstAttribute="top" secondItem="1rJ-vq-hVI" secondAttribute="top" constant="16" id="qtu-nD-od3"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1261,20 +1255,20 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="43" translatesAutoresizingMaskIntoConstraints="NO" id="jhI-km-pQR">
-                                                    <rect key="frame" x="53" y="106.33333333333333" width="255" height="32.666666666666671"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jhI-km-pQR">
+                                                    <rect key="frame" x="56" y="106.33333333333333" width="245" height="32.666666666666671"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="9u3-cf-Yhb">
-                                                            <rect key="frame" x="0.0" y="0.0" width="56.333333333333336" height="32.666666666666664"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="81.666666666666671" height="32.666666666666664"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Provas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epj-m7-MDt">
-                                                                    <rect key="frame" x="9" y="0.0" width="38.333333333333336" height="14.333333333333334"/>
+                                                                    <rect key="frame" x="21.666666666666675" y="0.0" width="38.333333333333343" height="14.333333333333334"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFL-gS-Qa1">
-                                                                    <rect key="frame" x="24.333333333333329" y="18.333333333333329" width="7.6666666666666679" height="14.333333333333336"/>
+                                                                    <rect key="frame" x="37" y="18.333333333333329" width="7.6666666666666643" height="14.333333333333336"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -1282,16 +1276,16 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="cZ9-gm-DUV">
-                                                            <rect key="frame" x="99.333333333333343" y="1.6666666666666732" width="56.333333333333343" height="29.666666666666671"/>
+                                                            <rect key="frame" x="81.666666666666657" y="1.6666666666666732" width="81.666666666666657" height="29.666666666666671"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Média" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Obc-Dg-PMJ">
-                                                                    <rect key="frame" x="11" y="0.0" width="34.333333333333336" height="14.333333333333334"/>
+                                                                    <rect key="frame" x="23.666666666666689" y="0.0" width="34.333333333333343" height="14.333333333333334"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" white="0.33333333329999998" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="65.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mjh-6w-xLd">
-                                                                    <rect key="frame" x="15.666666666666655" y="15.333333333333343" width="25.333333333333329" height="14.333333333333336"/>
+                                                                    <rect key="frame" x="28.333333333333343" y="15.333333333333343" width="25.333333333333329" height="14.333333333333336"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" white="0.33333333329999998" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -1299,16 +1293,16 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="EzM-Oz-gsn">
-                                                            <rect key="frame" x="198.66666666666669" y="0.0" width="56.333333333333343" height="32.666666666666664"/>
+                                                            <rect key="frame" x="163.33333333333334" y="0.0" width="81.666666666666657" height="32.666666666666664"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Situação" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9P-c9-7DK">
-                                                                    <rect key="frame" x="3.6666666666666288" y="0.0" width="49.333333333333336" height="14.333333333333334"/>
+                                                                    <rect key="frame" x="16.333333333333318" y="0.0" width="49.333333333333343" height="14.333333333333334"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" white="0.33333333329999998" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Indefinido" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mz-yZ-7nm">
-                                                                    <rect key="frame" x="0.0" y="18.333333333333329" width="56.333333333333336" height="14.333333333333336"/>
+                                                                    <rect key="frame" x="12.666666666666661" y="18.333333333333329" width="56.333333333333343" height="14.333333333333336"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" white="0.33333333329999998" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -1317,18 +1311,21 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nome:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sv5-Ot-qLy">
-                                                    <rect key="frame" x="69" y="18" width="239" height="19"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sv5-Ot-qLy">
+                                                    <rect key="frame" x="56" y="15.999999999999998" width="245" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFx-Ty-vAh">
-                                                    <rect key="frame" x="69" y="45.333333333333336" width="164" height="1.6666666666666643"/>
+                                                    <rect key="frame" x="56" y="43.333333333333336" width="245" height="2"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="2" id="ke2-3F-czT"/>
+                                                    </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Local: DIN 101" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNh-NQ-VFJ">
-                                                    <rect key="frame" x="69" y="55" width="239" height="19"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Local: DIN 101" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNh-NQ-VFJ">
+                                                    <rect key="frame" x="56" y="53.333333333333329" width="245" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1336,21 +1333,22 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="tNh-NQ-VFJ" firstAttribute="top" secondItem="GFx-Ty-vAh" secondAttribute="bottom" constant="8" id="EEh-r2-Anf"/>
-                                                <constraint firstAttribute="trailing" secondItem="GFx-Ty-vAh" secondAttribute="trailing" constant="84" id="FA2-Bi-rBQ"/>
-                                                <constraint firstItem="1rJ-vq-hVI" firstAttribute="leading" secondItem="K4i-qm-FDh" secondAttribute="leading" id="HPQ-ir-ILN"/>
-                                                <constraint firstAttribute="bottom" secondItem="1rJ-vq-hVI" secondAttribute="bottom" id="TPe-48-lFL"/>
-                                                <constraint firstItem="GFx-Ty-vAh" firstAttribute="top" secondItem="Sv5-Ot-qLy" secondAttribute="bottom" constant="8" id="UR5-us-bZd"/>
+                                                <constraint firstItem="GFx-Ty-vAh" firstAttribute="leading" secondItem="1rJ-vq-hVI" secondAttribute="trailing" constant="16" id="4vx-9g-VKF"/>
+                                                <constraint firstAttribute="trailing" secondItem="Sv5-Ot-qLy" secondAttribute="trailing" constant="16" id="GnD-8U-6WC"/>
+                                                <constraint firstItem="1rJ-vq-hVI" firstAttribute="centerY" secondItem="K4i-qm-FDh" secondAttribute="centerY" id="R62-3c-DyI"/>
+                                                <constraint firstItem="jhI-km-pQR" firstAttribute="leading" secondItem="1rJ-vq-hVI" secondAttribute="trailing" constant="16" id="TTh-8y-j7N"/>
                                                 <constraint firstAttribute="bottom" secondItem="jhI-km-pQR" secondAttribute="bottom" constant="8" id="UpB-kV-ZPJ"/>
-                                                <constraint firstAttribute="trailing" secondItem="jhI-km-pQR" secondAttribute="trailing" constant="9" id="WwS-5Y-Bzi"/>
-                                                <constraint firstAttribute="bottom" secondItem="GFx-Ty-vAh" secondAttribute="bottom" constant="100" id="XQ7-Cm-Pwd"/>
-                                                <constraint firstItem="tNh-NQ-VFJ" firstAttribute="leading" secondItem="1rJ-vq-hVI" secondAttribute="trailing" constant="26" id="ai9-6j-Ukg"/>
-                                                <constraint firstItem="jhI-km-pQR" firstAttribute="leading" secondItem="1rJ-vq-hVI" secondAttribute="trailing" constant="10" id="b7W-WX-JfJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="jhI-km-pQR" secondAttribute="trailing" constant="16" id="WwS-5Y-Bzi"/>
+                                                <constraint firstItem="GFx-Ty-vAh" firstAttribute="top" secondItem="Sv5-Ot-qLy" secondAttribute="bottom" constant="8" id="Y6o-bd-K0F"/>
+                                                <constraint firstItem="Sv5-Ot-qLy" firstAttribute="top" secondItem="K4i-qm-FDh" secondAttribute="top" constant="16" id="Zx3-2L-zml"/>
+                                                <constraint firstItem="Sv5-Ot-qLy" firstAttribute="leading" secondItem="1rJ-vq-hVI" secondAttribute="trailing" constant="16" id="bZb-IP-kHJ"/>
                                                 <constraint firstAttribute="height" constant="147" id="eyS-fw-zNy"/>
-                                                <constraint firstItem="1rJ-vq-hVI" firstAttribute="top" secondItem="K4i-qm-FDh" secondAttribute="top" id="iOX-rW-mso"/>
-                                                <constraint firstItem="Sv5-Ot-qLy" firstAttribute="leading" secondItem="1rJ-vq-hVI" secondAttribute="trailing" constant="26" id="jAd-6A-e5s"/>
-                                                <constraint firstItem="Sv5-Ot-qLy" firstAttribute="top" secondItem="K4i-qm-FDh" secondAttribute="top" constant="18" id="n5i-FA-yDf"/>
-                                                <constraint firstItem="GFx-Ty-vAh" firstAttribute="leading" secondItem="K4i-qm-FDh" secondAttribute="leading" constant="69" id="vjr-Tk-zLv"/>
+                                                <constraint firstItem="1rJ-vq-hVI" firstAttribute="height" secondItem="K4i-qm-FDh" secondAttribute="height" id="jV3-S1-rIn"/>
+                                                <constraint firstItem="tNh-NQ-VFJ" firstAttribute="leading" secondItem="1rJ-vq-hVI" secondAttribute="trailing" constant="16" id="ke5-ik-IGE"/>
+                                                <constraint firstAttribute="trailing" secondItem="GFx-Ty-vAh" secondAttribute="trailing" constant="16" id="pYn-GA-Yd6"/>
+                                                <constraint firstAttribute="trailing" secondItem="tNh-NQ-VFJ" secondAttribute="trailing" constant="16" id="qOY-6i-mlf"/>
+                                                <constraint firstItem="1rJ-vq-hVI" firstAttribute="leading" secondItem="K4i-qm-FDh" secondAttribute="leading" id="vMv-ld-GRd"/>
+                                                <constraint firstItem="tNh-NQ-VFJ" firstAttribute="top" secondItem="GFx-Ty-vAh" secondAttribute="bottom" constant="8" id="zDE-Yg-pAj"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -1726,7 +1724,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="9:00 am" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bJH-Jm-aPn">
+                                        <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="9:00 am" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bJH-Jm-aPn" customClass="DateTextField" customModule="UhereLast" customModuleProvider="target">
                                             <rect key="frame" x="111" y="7" width="256" height="30"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1784,7 +1782,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hcX-HR-TWB" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*Nome do semestre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hcX-HR-TWB">
                                                     <rect key="frame" x="16" y="7" width="343" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="9o2-Kn-urh"/>
@@ -1792,20 +1790,6 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="*Nome do semestre"/>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
-                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="*Nome do semestre"/>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Nome"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1823,7 +1807,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tkh-yn-8cv" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*Data início" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tkh-yn-8cv" customClass="DateTextField" customModule="UhereLast" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="7" width="343" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="4IM-95-WAf"/>
@@ -1831,20 +1815,6 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
-                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="*Data de início"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="*Data de início"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Início"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1862,7 +1832,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*Data de fim" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sf1-TB-Mat" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*Data de fim" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sf1-TB-Mat" customClass="DateTextField" customModule="UhereLast" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="7" width="343" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="2qp-Ay-oE7"/>
@@ -1870,20 +1840,6 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
-                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="*Data final"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="*Data final"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Fim"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1923,14 +1879,12 @@
         <!--Calendário-->
         <scene sceneID="9n7-S2-ppk">
             <objects>
-                <navigationController storyboardIdentifier="CalendarioNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="oYt-FY-VjU" customClass="CalendarioNavigationController" customModule="UhereLast" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CalendarioNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="oYt-FY-VjU" customClass="NavigationController" customModule="UhereLast" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Calendário" image="calendar" id="FJG-GJ-p5R"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="c3V-Q4-Upy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="c3V-Q4-Upy">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1944,13 +1898,12 @@
         <!--Semestres-->
         <scene sceneID="AMN-Hb-dzl">
             <objects>
-                <navigationController storyboardIdentifier="SemestresNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="qP9-tc-gJ3" customClass="SemestresNavigationController" customModule="UhereLast" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SemestresNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="qP9-tc-gJ3" customClass="NavigationController" customModule="UhereLast" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Semestres" image="semestre" id="cMW-yt-F1D"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="ofV-Ug-l64">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ofV-Ug-l64">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -2537,7 +2490,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tf0-RN-fgw" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*Dia e Hora" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tf0-RN-fgw" customClass="DateTextField" customModule="UhereLast" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="0.0" width="343" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="aFC-yH-LW3"/>
@@ -2545,23 +2498,6 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
-                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="*Dia e Hora"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="*Dia e Hora"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Dia e Hora"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -2795,7 +2731,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*dd/mm/aaaa HH:mm" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KHt-WV-VTw" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*Dia e Hora" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KHt-WV-VTw" customClass="DateTextField" customModule="UhereLast" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="0.0" width="343" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="GnU-fu-4Rs"/>
@@ -2803,23 +2739,6 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
-                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="*Dia e Hora"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="*Dia e Hora"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="Dia e Hora"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -3074,7 +2993,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M5U-4Z-GJr" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="*Dia e Hora" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M5U-4Z-GJr" customClass="DateTextField" customModule="UhereLast" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="0.0" width="343" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="TLe-vh-QjN"/>
@@ -3082,23 +3001,6 @@
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="*Dia e Hora"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="selectedTitle" value="*Dia e Hora"/>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="title" value="*Dia e Hora"/>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
-                                                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -3269,7 +3171,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pCM-Xh-wWH">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="pCM-Xh-wWH" customClass="SegmentedControl" customModule="UhereLast" customModuleProvider="target">
                                 <rect key="frame" x="64" y="0.0" width="247" height="29"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
@@ -3277,12 +3179,11 @@
                                     <segment title="Pendentes"/>
                                     <segment title="Concluídos"/>
                                 </segments>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="btSegmentedControlAction:" destination="iys-4P-YqL" eventType="valueChanged" id="3Cj-sv-5CY"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="b7c-ce-tjT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="b7c-ce-tjT" customClass="TableView" customModule="UhereLast" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="375" height="597"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -3293,7 +3194,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="129.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9UI-bA-WOb" customClass="CellDesign" customModule="UhereLast" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9UI-bA-WOb" customClass="CellPatterDesignView" customModule="UhereLast" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="8.0000000000000071" width="318" height="113.66666666666669"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2h-BC-85Y">
@@ -3385,7 +3286,6 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="b7c-ce-tjT" firstAttribute="top" secondItem="pCM-Xh-wWH" secondAttribute="bottom" constant="16" id="3fL-Oi-13K"/>
                             <constraint firstItem="b7c-ce-tjT" firstAttribute="trailing" secondItem="T2s-NX-4Yk" secondAttribute="trailing" id="HGm-ua-hLI"/>
@@ -3422,7 +3322,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="129.66666666666666"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZY4-9I-cCI" customClass="CellDesign" customModule="UhereLast" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZY4-9I-cCI" customClass="CellPatterDesignView" customModule="UhereLast" customModuleProvider="target">
                                             <rect key="frame" x="16" y="8.0000000000000071" width="317" height="113.66666666666669"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="gTl-uj-A6Y">
@@ -3528,13 +3428,12 @@
         <!--Atividades-->
         <scene sceneID="neZ-yd-K36">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5EP-f6-WZW" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5EP-f6-WZW" customClass="NavigationController" customModule="UhereLast" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Atividades" image="list" id="KhX-3u-tO2"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="nRc-zU-irm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="nRc-zU-irm">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -3548,13 +3447,12 @@
         <!--Avaliações-->
         <scene sceneID="8RQ-cs-sAj">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bqJ-mA-YH3" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bqJ-mA-YH3" customClass="NavigationController" customModule="UhereLast" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Avaliações" image="test" id="5xT-fm-m4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="lnc-Lh-qHQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="lnc-Lh-qHQ">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -3576,9 +3474,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Pav-vh-2Fw"/>
-        <segue reference="ugH-eN-yav"/>
+        <segue reference="jDq-k1-8pN"/>
         <segue reference="xY8-kD-Utf"/>
         <segue reference="5gJ-Xc-gm2"/>
-        <segue reference="AKP-e1-No7"/>
+        <segue reference="FmU-0x-UgN"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class SemestreCell: UITableViewCell{
+class SemestreCell: PatterDesignCell{
     
     @IBOutlet weak var lbTitulo: UILabel!
     @IBOutlet weak var lbDataInicio: UILabel!

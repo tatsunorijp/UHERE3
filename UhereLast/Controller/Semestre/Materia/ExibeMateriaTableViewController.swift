@@ -9,7 +9,7 @@
 import UIKit
 import ColorPicker
 
-class ExibeMateriaTableViewController: UITableViewController, ColorPickerDelegate {
+class ExibeMateriaTableViewController: TableViewController, ColorPickerDelegate {
 
     var materia = Materia()
     @IBOutlet weak var tfNome: UITextField!
@@ -55,7 +55,6 @@ class ExibeMateriaTableViewController: UITableViewController, ColorPickerDelegat
             materia.offSetString = lbAlerta.text
                 
             preencherValorPadrao()
-            
             changeDates()
             
             if(materia.alertaOffSet >= 0){
@@ -128,8 +127,7 @@ class ExibeMateriaTableViewController: UITableViewController, ColorPickerDelegat
             let destino = segue.destination as! FaltasViewController
             destino.materia = materia
             
-    }
-        
+        }
     }
     
     func loadDates(){

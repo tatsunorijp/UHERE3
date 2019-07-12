@@ -9,9 +9,9 @@
 import UIKit
 import CoreData
 
-class AtividadesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AtividadesViewController: ViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: TableView!
     var semestres: [NSManagedObject] = []
     var materias: [Materia] = []
     var id: String = ""
@@ -26,28 +26,24 @@ class AtividadesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Controller.configureTableView(tableView: tableView)
         navigationController?.navigationBar.prefersLargeTitles = true
-        //Controller.configureTableView(view: self)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        materias = []
+        super.viewDidAppear(animated)
         loadFunctions()
         tableView.reloadData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        let atividades = Atividade.getAtividades()
-        
+        super.viewDidAppear(animated)
+
         //GAMBIARRA PARA REMOVER O VINCULO ENTRE MATERIAINDEFINIDA E ATIVIDADEINDEFINIDA CRIADAS NA APARICAO DA TELA
-        if(atividades.count > 0 ){
-            for i in 0...atividades.count-1{
-                let atividade = atividades[i] as! Atividade
-                if atividade.relationship?.nome == "Indefinido"{
-                    atividades[i].setValue(nil, forKeyPath: "relationship")
-                }
-            }
+        let atividadesWithOutMateria = Atividade.getAtividadesWithOutMateria()
+        for atividade in atividadesWithOutMateria {
+            atividade.relationship = nil
         }
     }
     
@@ -55,76 +51,22 @@ class AtividadesViewController: UIViewController, UITableViewDelegate, UITableVi
         Controller.dateTimeFormat()
         
         let materiaIndefinida = Materia.init(nome: "Indefinido", local: "", professor: "", limiteFaltas: 0, faltas: 0, cor: "#00CDF6", offSet: 0.0, offSetString: "Desativado")
-        let atividades = Atividade.getAtividades()
-        
-        //CRIA O VINCULO ENTRE MATERIA E ATIVIDADE INDEFINIDA
-        if(atividades.count > 0){
-            for i in 0...atividades.count-1{
-                if atividades[i].value(forKey: "relationship") == nil{
-                    materiaIndefinida?.addToRawAtividades(atividades[i] as! Atividade)
-                }
-            }
-            
-        }
-        
-        
-        
-        if((materiaIndefinida?.atividades?.count)! > 0){
-            materias.append(materiaIndefinida!)
-        }
-        
-        //PEGAR TODAS AS MATERIAS QUE CONTEM ATIVIDADES
-        semestres = Semestre.getSemestres()
-        if semestres.count != 0 {
-            for i in 0...semestres.count-1{
-                let semestre = semestres[i] as! Semestre
-                if semestre.materias?.count != 0{
-                    
-                    for j in 0...(semestre.materias?.count)! - 1{
-                        if (semestre.materias![j].atividades?.count != 0){
-                            materias.append(semestre.materias![j])
-                        }
-                    }
-                }
-            }
+
+        materias = Materia.getMateriasWithAtividades()
+
+        let atividadesWithOutMateria = Atividade.getAtividadesWithOutMateria()
+        //GAMBIARRA PARA ADD VINCULO NA ATIVIDADE SEM MATERIA
+        for atividade in atividadesWithOutMateria {
+            materiaIndefinida?.addToRawAtividades(atividade)
         }
 
-                
-        
+        if !(materiaIndefinida?.atividades!.isEmpty)! {
+            materias.append(materiaIndefinida!)
+        }
     }
     
     func loadDataToShow(){
         var localAtividades: [Atividade] = []
-        
-        /*if (materias.count > 0){
-            for i in 0...materias.count-1{
-                let atividadesCount = materias[i].atividades?.count
-                
-                if(atividadesCount! > 0){
-                    for j in 0...atividadesCount! - 1{
-                        let atividade = materias[i].atividades![j]
-                        
-                        switch segmentedControlValue{
-                        case 1:
-                            if(biggerThenToday(date: atividade.diaHora! as Date)){
-                                localAtividades.append(atividade)
-                            }
-                        case 2:
-                            if(!biggerThenToday(date: atividade.diaHora! as Date)){
-                                localAtividades.append(atividade)
-                            }
-                        default:
-                            break
-                        }
-                    }
-                    if(localAtividades.count > 0){
-                        atividadesToShow.append(atividadesStruct.init(sectionName: materias[i].nome, atividades: localAtividades))
-                        localAtividades = []
-                    }
-                }
-            }
-        }*/
-        
         if segmentedControlValue == 1{
             for materia in materias{
                 for atividade in materia.atividades!{
@@ -158,11 +100,8 @@ class AtividadesViewController: UIViewController, UITableViewDelegate, UITableVi
         if(segmentedControlValue != 0){
             return atividadesToShow.count
         }
-        
         return materias.count
     }
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(segmentedControlValue != 0){
@@ -173,10 +112,9 @@ class AtividadesViewController: UIViewController, UITableViewDelegate, UITableVi
         return materia.atividades?.count ?? 0
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "atividadeCell", for: indexPath) as! AtividadeCell
-        /*var atividade = Atividade()
+        var atividade = Atividade()
         
         switch segmentedControlValue {
         case 1:
@@ -190,17 +128,13 @@ class AtividadesViewController: UIViewController, UITableViewDelegate, UITableVi
         cell.lbNome.text = atividade.nome
         cell.lbData.text = Controller.dateFormatter.string(from: atividade.diaHora! as Date)
         cell.lbTipo.text = atividade.tipo
-            
+         
         if(atividade.cor == "AAABAA"){
             cell.viewColor.backgroundColor = UIColor.colorWithHexString(atividade.cor!)
         }else{
             cell.viewColor.backgroundColor = UIColor.colorWithHexString(atividade.relationship!.cor!)
-                
+         
         }
-        cell.backgroundColor = UIColor(white: 0.95, alpha: 1)
-        */
-        
-
         return cell
     }
     

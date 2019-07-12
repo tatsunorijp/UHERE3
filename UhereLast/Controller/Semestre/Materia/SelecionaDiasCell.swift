@@ -11,17 +11,12 @@ import UIKit
 class SelecionaDiasCell: UITableViewCell {
     
     @IBOutlet weak var lbDia: UILabel!
-    @IBOutlet weak var tfHora: UITextField!
-    
-    /*override func awakeFromNib() {
+    @IBOutlet weak var tfHora: DateTextField!
+ 
+    override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        tintColor = Color.mainColor
+        tfHora.setConfig(format: Constants.timeFormat, mode: .time)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }*/
-
+    
 }

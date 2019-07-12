@@ -15,7 +15,7 @@ class ExibeAtividadesTableViewController: UITableViewController {
     @IBOutlet weak var tfTitulo: UITextField!
     @IBOutlet weak var lbDisciplina: UILabel!
     @IBOutlet weak var lbTipo: UILabel!
-    @IBOutlet weak var lbData: UITextField!
+    @IBOutlet weak var lbData: DateTextField!
     @IBOutlet weak var lbAlerta: UILabel!
     @IBOutlet weak var tfLocal: UITextField!
     @IBOutlet weak var tfAnotacao: UITextView!
@@ -28,7 +28,6 @@ class ExibeAtividadesTableViewController: UITableViewController {
     var newId: String = ""
     var oldId: String = ""
     var concluido : Bool = false
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +43,11 @@ class ExibeAtividadesTableViewController: UITableViewController {
             guard let nome = tfTitulo.text,
                 let tipo = lbTipo.text,
                 let local = tfLocal.text,
-                let anotacao = tfAnotacao.text,
-                let data = Controller.dateFormatter.date(from: lbData.text!)  else {
+                let anotacao = tfAnotacao.text else {
                     print("Erro nos let de atividades")
                     return
             }
+            let data = lbData.date
             
             atividade.nome = nome
             atividade.tipo = tipo
@@ -95,10 +94,10 @@ class ExibeAtividadesTableViewController: UITableViewController {
         }
         
     }
-    
-    @objc func dateChanged(datePicker: UIDatePicker){
-        lbData.text = Controller.dateFormatter.string(from: datePicker.date)
-    }
+//
+//    @objc func dateChanged(datePicker: UIDatePicker){
+//        lbData.text = Controller.dateFormatter.string(from: datePicker.date)
+//    }
     
     func loadData(){
         tableView.keyboardDismissMode = .onDrag
@@ -112,12 +111,14 @@ class ExibeAtividadesTableViewController: UITableViewController {
             oldId = Notificacoes.idGenerator(type: "Atividade", materia: "Indefinido",title: atividade.nome!, date: atividade.diaHora! as Date)
         }
         
-        Controller.dateTimeFormat()
-        datePicker.datePickerMode = .dateAndTime
-        lbData.inputView = datePicker
-        datePicker.addTarget(self, action: #selector (self.dateChanged(datePicker:)), for: .valueChanged)
-        
-        lbData.text = Controller.dateFormatter.string(from: atividade.diaHora! as Date)
+//        Controller.dateTimeFormat()
+//        datePicker.datePickerMode = .dateAndTime
+//        lbData.inputView = datePicker
+//        datePicker.addTarget(self, action: #selector (self.dateChanged(datePicker:)), for: .valueChanged)
+//
+//        lbData.text = Controller.dateFormatter.string(from: atividade.diaHora! as Date)
+        lbData.setConfig(format: Constants.dateTimeFormat, mode: .dateAndTime)
+        lbData.date = atividade.diaHora! as Date
         
         lbTipo.text = atividade.tipo
         

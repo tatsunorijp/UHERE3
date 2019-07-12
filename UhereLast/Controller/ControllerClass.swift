@@ -49,16 +49,12 @@ class Controller{
         vc.present(alert, animated: true, completion: nil)
     }
     
-    static func configureTableViewController(view: UITableViewController){
-        view.tableView.separatorColor = UIColor(white: 0.95, alpha: 1)
-        view.tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
-        view.tableView.keyboardDismissMode = .onDrag
-    }
-    
-    static func configureTableView(tableView: UITableView){
-        tableView.separatorColor = UIColor(white: 0.95, alpha: 1)
-        tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
-    }
+//    static func configureTableViewController(view: UITableViewController){
+//        
+//    }
+//    
+//    static func configureTableView(tableView: UITableView){
+//    }
     
     static func getDiasSemana(diasHoras: DiasHoras) -> [Bool]{
         var dias:[Bool] = []

@@ -9,18 +9,14 @@
 import UIKit
 import CoreData
 
-class SemestresTableViewController: UITableViewController{
+class SemestresTableViewController: TableViewController {
     var semestres: [NSManagedObject] = []
     var indexToEdit: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
-        Controller.configureTableViewController(view: self)
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     override func viewDidAppear(_ animated: Bool) {
         semestres = Semestre.getSemestres()
-
-        
         tableView.reloadData()
         indexToEdit = nil
     }
@@ -43,8 +39,6 @@ class SemestresTableViewController: UITableViewController{
         cell.lbDataInicio.text = Controller.dateFormatter.string(from: semestre.dataInicio! as Date)
         cell.lbDataFim.text = Controller.dateFormatter.string(from: semestre.dataFim! as Date)
         cell.lbTotalMaterias.text = semestre.materias?.count.description
-        cell.backgroundColor = UIColor(white: 0.95, alpha: 1)
-
         
         return cell
     }
@@ -103,11 +97,7 @@ class SemestresTableViewController: UITableViewController{
                 destination.semestre = semestres[indexToEdit!] as? Semestre
                 destination.edit = indexToEdit
             }
-            
-            
         }
-        
-        
     }
     
     func deleteMaterias(indexPath: Int){

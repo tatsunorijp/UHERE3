@@ -92,7 +92,7 @@ public class Atividade: NSManagedObject {
         }
     }
     
-    static func getAtividades() -> Array<NSManagedObject>{
+    static func getAtividades() -> Array<NSManagedObject> {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         let managedContext = appDelegate!.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Atividade> = Atividade.fetchRequest()
@@ -105,6 +105,19 @@ public class Atividade: NSManagedObject {
         }
         
         return []
+    }
+    
+    static func getAtividadesWithOutMateria() -> [Atividade] {
+        let atividades = getAtividades() as! [Atividade]
+        var atividadesWithOutMateria: [Atividade] = []
+        
+        for atividade in atividades {
+            if atividade.relationship == nil {
+                atividadesWithOutMateria.append(atividade)
+            }
+        }
+        
+        return atividadesWithOutMateria
     }
     
 }

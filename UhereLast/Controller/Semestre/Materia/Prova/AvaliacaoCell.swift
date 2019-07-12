@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AvaliacaoCell: UITableViewCell {
+class AvaliacaoCell: PatterDesignCell {
     @IBOutlet weak var lbNome: UILabel!
     @IBOutlet weak var lbPeso: UILabel!
     @IBOutlet weak var lbNota: UILabel!

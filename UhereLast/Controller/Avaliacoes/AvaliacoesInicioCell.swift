@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AvaliacoesInicioCell: UITableViewCell {
+class AvaliacoesInicioCell: PatterDesignCell {
 
     @IBOutlet weak var lbNome: UILabel!
     @IBOutlet weak var lbData: UILabel!
@@ -16,13 +16,10 @@ class AvaliacoesInicioCell: UITableViewCell {
     @IBOutlet weak var colorView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

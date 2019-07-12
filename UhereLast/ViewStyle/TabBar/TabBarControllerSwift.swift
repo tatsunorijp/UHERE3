@@ -1,20 +1,19 @@
 //
-//  AvaliacoesInicioNavigationController.swift
+//  TabBarControllerSwift.swift
 //  UHere-2
 //
-//  Created by Wellington Tatsunori Asahide on 10/03/19.
+//  Created by Wellington Tatsunori Asahide on 30/01/19.
 //  Copyright © 2019 tatsu. All rights reserved.
 //
 
 import UIKit
 
-class AvaliacoesInicioNavigationController: UINavigationController {
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
-    }
+class TabBarControllerSwift: UITabBarController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        UITabBar.appearance().barTintColor = Color.mainColor
+        UITabBar.appearance().tintColor = .white
         // Do any additional setup after loading the view.
     }
     

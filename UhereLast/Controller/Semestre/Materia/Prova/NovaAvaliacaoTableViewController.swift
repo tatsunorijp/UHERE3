@@ -14,7 +14,7 @@ class NovaAvaliacaoTableViewController: UITableViewController {
     @IBOutlet weak var tfNome: UITextField!
     @IBOutlet weak var tfNota: UITextField!
     @IBOutlet weak var tfPeso: UITextField!
-    @IBOutlet weak var tfData: UITextField!
+    @IBOutlet weak var tfData: DateTextField!
     @IBOutlet weak var lbMateria: UILabel!
     let datePicker = UIDatePicker()
     var offset: Double = 0.0
@@ -26,8 +26,6 @@ class NovaAvaliacaoTableViewController: UITableViewController {
         loadFunctions()
         super.viewDidLoad()
         tableView.keyboardDismissMode = .onDrag
-
-        
     }
     
     @IBAction func btNovaAvaliacao(_ sender: Any) {
@@ -41,7 +39,7 @@ class NovaAvaliacaoTableViewController: UITableViewController {
             let nome = tfNome.text!
             let peso = Double(tfPeso.text!)!
             let nota = Double(tfNota.text!) ?? 0
-            let data: Date = Controller.dateFormatter.date(from: tfData.text!)!
+            let data = tfData.date
             
             if let avaliacao = Prova.init(nome: nome, peso: peso, nota: nota, diaHora: data, offSet: offset, offSetString: lbAlerta.text!){
                 
@@ -62,21 +60,11 @@ class NovaAvaliacaoTableViewController: UITableViewController {
     func loadFunctions(){
         lbMateria.text = materia.nome
         lbMateria.textColor = UIColor.colorWithHexString(cor)
-        
-        datePicker.datePickerMode = .dateAndTime
-        tfData.inputView = datePicker
-        datePicker.addTarget(self, action: #selector(self.dataInicioChanged(datePicker:)), for: .valueChanged)
-        
-        Controller.dateTimeFormat()
+        tfData.setConfig(format: Constants.dateTimeFormat, mode: .dateAndTime)
     }
     
     @objc func viewClicked(reconhecedorGesto: UITapGestureRecognizer){
         view.endEditing(true)
-    }
-    
-    @objc func dataInicioChanged(datePicker: UIDatePicker){
-        Controller.dateTimeFormat()
-        tfData.text = Controller.dateFormatter.string(from: datePicker.date)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

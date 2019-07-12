@@ -25,7 +25,6 @@ class NovaMateriaTableViewController: UITableViewController, ColorPickerDelegate
     
     override func viewDidLoad() {
         loadFunctions()
-        
         super.viewDidLoad()
     }
     
@@ -60,7 +59,6 @@ class NovaMateriaTableViewController: UITableViewController, ColorPickerDelegate
     }
     func colorPicker(_ colorPicker: ColorPickerListView, selectedColor: String) {
         cor = selectedColor
-        //print(selectedColor)
     }
     
     func colorPicker(_ colorPicker: ColorPickerListView, deselectedColor: String) {
@@ -111,10 +109,9 @@ class NovaMateriaTableViewController: UITableViewController, ColorPickerDelegate
         configureColorPicker()
         tableView.keyboardDismissMode = .onDrag
         
-        Controller.timeFormat()
         for _ in 0...6{
             dias.append(false)
-            horas.append(Controller.dateFormatter.date(from: "9:00 am")!)
+            horas.append(Date())
         }
     }
     

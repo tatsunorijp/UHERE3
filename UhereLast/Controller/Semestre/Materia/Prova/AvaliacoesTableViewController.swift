@@ -8,19 +8,18 @@
 
 import UIKit
 
-class AvaliacoesTableViewController: UITableViewController {
+class AvaliacoesTableViewController: TableViewController {
     var materia = Materia()
     var cor: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        Controller.configureTableViewController(view: self)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         tableView.reloadData()
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -42,8 +41,6 @@ class AvaliacoesTableViewController: UITableViewController {
             cell.lbNota.text = String(prova.nota)
             cell.lbData.text = Controller.dateFormatter.string(from: prova.diaHora! as Date)
             cell.colorView.backgroundColor = UIColor.colorWithHexString(materia.cor!)
-            cell.backgroundColor = UIColor(white: 0.95, alpha: 1)
-
         }
         
         return cell
@@ -79,13 +76,7 @@ class AvaliacoesTableViewController: UITableViewController {
         
         return UISwipeActionsConfiguration(actions: [delete])
     }
- 
 
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "novaAvaliacao") {
             guard let destination = segue.destination as? NovaAvaliacaoTableViewController else{
@@ -101,11 +92,6 @@ class AvaliacoesTableViewController: UITableViewController {
             }
             
             destination.avaliacao = materia.provas![(tableView.indexPathForSelectedRow?.row)!]
-
-            
         }
-        
     }
- 
-
 }

@@ -13,7 +13,7 @@ class ExibeAvaliacaoTableViewController: UITableViewController {
     @IBOutlet weak var tfNome: UITextField!
     @IBOutlet weak var tfNota: UITextField!
     @IBOutlet weak var tfPeso: UITextField!
-    @IBOutlet weak var tfData: UITextField!
+    @IBOutlet weak var tfData: DateTextField!
     @IBOutlet weak var lbAlerta: UILabel!
     @IBOutlet weak var lbMateria: UILabel!
     
@@ -42,7 +42,7 @@ class ExibeAvaliacaoTableViewController: UITableViewController {
             let nome = tfNome.text!
             let peso = Double(tfPeso.text!)!
             let nota = Double(tfNota.text!) ?? 0
-            let data: Date = Controller.dateFormatter.date(from: tfData.text!)!
+            let data: Date = tfData.date
             avaliacao.nome = nome
             avaliacao.peso = peso
             avaliacao.nota = nota
@@ -78,10 +78,7 @@ class ExibeAvaliacaoTableViewController: UITableViewController {
     
     func loadData(){
         tableView.keyboardDismissMode = .onDrag
-        Controller.dateTimeFormat()
-        datePicker.datePickerMode = .dateAndTime
-        tfData.inputView = datePicker
-        datePicker.addTarget(self, action: #selector(self.dataChanged(datePicker:)), for: .valueChanged)
+        tfData.setConfig(format: Constants.dateTimeFormat, mode: .dateAndTime)
         
         tfNome.text = avaliacao.nome
         tfNota.text = String(avaliacao.nota)

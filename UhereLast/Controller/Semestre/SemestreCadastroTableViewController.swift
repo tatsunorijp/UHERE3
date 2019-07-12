@@ -9,14 +9,13 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-class SemestreCadastroTableViewController: UITableViewController {
+class SemestreCadastroTableViewController: TableViewController {
 
     @IBOutlet weak var tfNome: UITextField!
-    @IBOutlet weak var tfDataInicio: UITextField!
-    @IBOutlet weak var tfDataFim: UITextField!
+    @IBOutlet weak var tfDataInicio: DateTextField!
+    @IBOutlet weak var tfDataFim: DateTextField!
     @IBOutlet weak var btSave: UIBarButtonItem!
-    var datePickerInicio = UIDatePicker()
-    var datePickerFim = UIDatePicker()
+
     var edit: Int?
     var semestre: Semestre?
     
@@ -26,35 +25,25 @@ class SemestreCadastroTableViewController: UITableViewController {
     }
     
     func loadFunction(){
-        datePickerInicio.datePickerMode = .date
-        datePickerFim.datePickerMode = .date
-        
-        tfDataInicio.inputView = datePickerInicio
-        tfDataFim.inputView = datePickerFim
-        
-        datePickerInicio.addTarget(self, action: #selector (self.dataInicioChanged(datePicker:)), for: .valueChanged)
-        datePickerFim.addTarget(self, action: #selector (self.dataFimChanged(datePicker:)), for: .valueChanged)
+        tfDataInicio.setConfig(format: Constants.dateFormat, mode: .date)
+        tfDataFim.setConfig(format:  Constants.dateFormat, mode: .date)
+
         tableView.keyboardDismissMode = .onDrag
         
         if edit != nil{
             Controller.dateFormat()
             tfNome.text = semestre?.nome
-            tfDataInicio.text = Controller.dateFormatter.string(from: semestre?.dataInicio as! Date)
-            tfDataFim.text = Controller.dateFormatter.string(from: semestre?.dataFim as! Date)
+            if let dateStart = semestre?.dataInicio,
+                let dateEnd = semestre?.dataFim {
+                tfDataInicio.date = dateStart as Date
+                tfDataFim.date = dateEnd as Date
+            }
+            
             btSave.title = "Done"
             navigationItem.title = "Edit"
             
             Controller.alertaContinuar(titulo: "Alteração de semestre", menssagem: "Atenção, caso seja efetuado a alteração dos dados de um semestre, todas as faltas cadastradas de suas respectivas disciplinas serão deletadas. CUIDADO!", vc: self)
         }
-    }
-    
-    @objc func dataInicioChanged(datePicker: UIDatePicker){
-        Controller.dateFormat()
-        tfDataInicio.text = Controller.dateFormatter.string(from: datePicker.date)
-    }
-    @objc func dataFimChanged(datePicker: UIDatePicker){
-        Controller.dateFormat()
-        tfDataFim.text = Controller.dateFormatter.string(from: datePicker.date)
     }
     
     @IBAction func btSave(_ sender: Any) {
@@ -65,8 +54,8 @@ class SemestreCadastroTableViewController: UITableViewController {
             print("campos vazios no novo semestre")
         }else{
             let nome = tfNome.text!
-            let dataInicio: Date = Controller.dateFormatter.date(from: tfDataInicio.text!)!
-            let dataFim: Date = Controller.dateFormatter.date(from: tfDataFim.text!)!
+            let dataInicio: Date = tfDataInicio.date
+            let dataFim: Date = tfDataFim.date
             
             if (dataFim < dataInicio){
                 Controller.alertaContinuar(titulo: "Datas não equivalentes", menssagem: "A data de ínicio deve ser menor que a data de fim do semestre", vc: self)
@@ -77,7 +66,6 @@ class SemestreCadastroTableViewController: UITableViewController {
                     semestre?.dataFim = dataFim as NSDate
                     
                     let materias = semestre?.materias
-                    
                     for materia in materias!{
                         let faltas = materia.falta
                         for falta in faltas!{
