@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Atividade" representedClassName="Atividade" syncable="YES">
         <attribute name="alertaOffSet" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="anotacao" optional="YES" attributeType="String" syncable="YES"/>
@@ -9,6 +9,7 @@
         <attribute name="local" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nota" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="notificationId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="offSetString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="peso" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="tipo" optional="YES" attributeType="String" syncable="YES"/>
@@ -70,7 +71,7 @@
         <relationship name="rawMaterias" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Materia" inverseName="semestre" inverseEntity="Materia" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Atividade" positionX="-54" positionY="81" width="128" height="225"/>
+        <element name="Atividade" positionX="-54" positionY="81" width="128" height="240"/>
         <element name="DiasHoras" positionX="-54" positionY="126" width="128" height="270"/>
         <element name="Falta" positionX="-54" positionY="135" width="128" height="75"/>
         <element name="Materia" positionX="-63" positionY="-18" width="128" height="285"/>

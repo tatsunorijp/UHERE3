@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 protocol SelecionarDisciplinaProtocol{
-    func disciplina(disciplina: Materia, selecionado: Bool)
+    func disciplina(disciplina: Materia?)
 }
 
 class SelecionarDisciplinaTableViewController: UITableViewController {
@@ -22,6 +22,7 @@ class SelecionarDisciplinaTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         excluiSemestreIndefinido(semestre: semestreExcluir)
         semestres = []
     }
@@ -58,9 +59,9 @@ class SelecionarDisciplinaTableViewController: UITableViewController {
             //GAMBIARRA, CASO O USUARIO SELECIONE A MATERIA INDEFINIDA, ENTAO O PARAMETRO SELECIONADO
             //SERA FALSO, ISSO EH PARA SABER SE A ATIVIDADE SERA SALVA COM OU SEM MATERIA
             if(indexPath.section == 0){
-                selecionarDisciplinaProtocol?.disciplina(disciplina: materia, selecionado: false)
-            }else{
-                selecionarDisciplinaProtocol?.disciplina(disciplina: materia, selecionado: true)
+                selecionarDisciplinaProtocol?.disciplina(disciplina: nil)
+            } else {
+                selecionarDisciplinaProtocol?.disciplina(disciplina: materia)
             }
             self.navigationController?.popViewController(animated: true)
         }
@@ -72,10 +73,10 @@ class SelecionarDisciplinaTableViewController: UITableViewController {
         semestreExcluir = semestreIndefinido()
         semestres.append(semestreExcluir)
         
-        for i in 0...semestreAll.count - 1{
-            let aux = semestreAll[i] as! Semestre
-            if ((aux.materias?.count)! > 0){
-                semestres.append(aux)
+        for semestre in semestreAll {
+            let semestreAux = semestre as! Semestre
+            if semestreAux.materias!.count > 0 {
+                semestres.append(semestreAux)
             }
         }
 }

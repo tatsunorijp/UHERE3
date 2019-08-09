@@ -22,11 +22,8 @@ class ExibeAtividadesTableViewController: UITableViewController {
     @IBOutlet weak var btSwitchConcluido: UISwitch!
     let datePicker = UIDatePicker()
     var offSet: Double = 0.0
-    var selecionado: Bool = true
-    var materiaSelecionada = Materia()
-    var oldMateria = Materia()
-    var newId: String = ""
-    var oldId: String = ""
+    var materiaSelecionada: Materia?
+    var oldMateria: Materia?
     var concluido : Bool = false
     
     override func viewDidLoad() {
@@ -58,24 +55,8 @@ class ExibeAtividadesTableViewController: UITableViewController {
             atividade.offSetString = lbAlerta.text
             atividade.concluido = concluido
             
-            if(selecionado){
-                atividade.cor = materiaSelecionada.cor
-                Atividade.changeWithMateria(oldMateria: oldMateria, newMateria: materiaSelecionada, atividade: atividade)
-                print("changeWithMateria")
-                newId = Notificacoes.idGenerator(type: "Atividade", materia: atividade.relationship!.nome!, title: atividade.nome!, date: atividade.diaHora! as Date)
-            }else{
-                    atividade.cor = "AAABAA"
-                    Atividade.change(atividade: atividade)
-                    Atividade.removeMateriaReference(materia: oldMateria, atividade: atividade)
-                    print("changewithOutMateria")
-                newId = Notificacoes.idGenerator(type: "Atividade", materia: "Indefinido", title: atividade.nome!, date: atividade.diaHora! as Date)
-            }
-            
-            if(atividade.alertaOffSet >= 0 ){
-                Notificacoes.update(title: atividade.nome!, oldId: oldId, newId: newId, body: atividade.anotacao!, date: atividade.diaHora! as Date, offSet: atividade.alertaOffSet)
-            }else{
-                Notificacoes.delete(id: [oldId])
-            }
+            atividade.cor = materiaSelecionada?.cor ?? "AAABAA"
+            Atividade.completeChange(oldMateria: oldMateria, newMateria: materiaSelecionada, atividade: atividade)
             
             self.navigationController?.popViewController(animated: true)
         }
@@ -94,10 +75,6 @@ class ExibeAtividadesTableViewController: UITableViewController {
         }
         
     }
-//
-//    @objc func dateChanged(datePicker: UIDatePicker){
-//        lbData.text = Controller.dateFormatter.string(from: datePicker.date)
-//    }
     
     func loadData(){
         tableView.keyboardDismissMode = .onDrag
@@ -105,18 +82,10 @@ class ExibeAtividadesTableViewController: UITableViewController {
         
         if(atividade.relationship != nil){
             lbDisciplina.text = atividade.relationship?.nome
-            oldId = Notificacoes.idGenerator(type: "Atividade",materia: atividade.relationship!.nome!,title: atividade.nome!, date: atividade.diaHora! as Date)
         }else{
             lbDisciplina.text = "Indefinido"
-            oldId = Notificacoes.idGenerator(type: "Atividade", materia: "Indefinido",title: atividade.nome!, date: atividade.diaHora! as Date)
         }
-        
-//        Controller.dateTimeFormat()
-//        datePicker.datePickerMode = .dateAndTime
-//        lbData.inputView = datePicker
-//        datePicker.addTarget(self, action: #selector (self.dateChanged(datePicker:)), for: .valueChanged)
-//
-//        lbData.text = Controller.dateFormatter.string(from: atividade.diaHora! as Date)
+
         lbData.setConfig(format: Constants.dateTimeFormat, mode: .dateAndTime)
         lbData.date = atividade.diaHora! as Date
         
@@ -128,14 +97,12 @@ class ExibeAtividadesTableViewController: UITableViewController {
         tfLocal.text = atividade.local
         tfAnotacao.text = atividade.anotacao
         oldMateria = atividade.relationship!
-        materiaSelecionada = atividade.relationship!
         btSwitchConcluido.isOn = atividade.concluido
         concluido = atividade.concluido
         //GAMBIARRA OU NAO?
         //SEMPRE VAI TER UMA MATERIA SELECIONADA, EXCETO  QUE, SE A COR FOR A DESCRITA ABAIXO, SIGNIFICA QUE A ATIVIDADE
         //NAO TEM VINCULO COM NENHUMA MATERIA, POR ISSO FAZ SE CONTA QUE NAO HÁ, NEM UMA MATERIA SELECIONADA
         if atividade.cor == "AAABAA"{
-            selecionado = false
             lbDisciplina.textColor = UIColor.colorWithHexString("AAABAA")
         }else{
             lbDisciplina.textColor = UIColor.colorWithHexString((atividade.relationship?.cor)!)
@@ -166,15 +133,9 @@ extension ExibeAtividadesTableViewController: TipoAtividadeProtocol{
 }
 
 extension ExibeAtividadesTableViewController: SelecionarDisciplinaProtocol{
-    func disciplina(disciplina: Materia, selecionado: Bool) {
-        if(selecionado){
-            materiaSelecionada = disciplina
-            lbDisciplina.text = disciplina.nome
-            lbDisciplina.textColor = UIColor.colorWithHexString(disciplina.cor ?? "#00CDF6")
-        }else{
-            lbDisciplina.text = "Indefinido"
-            lbDisciplina.textColor = UIColor.lightGray
-        }
-        self.selecionado = selecionado
+    func disciplina(disciplina: Materia?) {
+        materiaSelecionada = disciplina
+        lbDisciplina.text = disciplina?.nome
+        lbDisciplina.textColor = UIColor.colorWithHexString(disciplina?.cor ?? "#00CDF6")
     }
 }

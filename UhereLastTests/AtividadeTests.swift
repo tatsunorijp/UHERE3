@@ -26,25 +26,30 @@ class AtividadeTests: XCTestCase {
         let newAtividade = Atividade.init(nome: "atividade de test", tipo: "reuniao", data: Date(), alertaOffSet: 5.0, local: "none", anotacao: "none", cor: "FFFFFF", offSetString: "5 double")
         XCTAssertNotNil(newAtividade)
 
-        Atividade.save(atividade: newAtividade!)
+//        Atividade.save(atividade: newAtividade!)
+        Atividade.completeSave(atividade: newAtividade!, materia: nil)
         let quantityAfterSave = Atividade.getAtividades().count
         XCTAssertEqual(initialQuantity, quantityAfterSave - 1)
         
-        Atividade.delete(atividade: newAtividade!)
+//        Atividade.delete(atividade: newAtividade!)
+        Atividade.completeDelete(atividade: newAtividade!)
         let quantityAfterDelete = Atividade.getAtividades().count
         XCTAssertEqual(initialQuantity, quantityAfterDelete)
     }
     
     func test_getAtividadeWithoutMateria() {
         let atividadesWithOutMateria = Atividade.getAtividadesWithOutMateria()
-        var isAtividadeWithMateria: Bool = false
         for atividade in atividadesWithOutMateria {
-            isAtividadeWithMateria = isAtividadeWithMateria || (atividade.relationship == nil)
+            XCTAssertEqual(true, atividade.relationship == nil)
         }
-        
-        XCTAssertEqual(isAtividadeWithMateria, false)
     }
     
-    
-
+    func test_shouldCreateCorrectId() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Constants.dateTimeFormat
+        let date = dateFormatter.date(from: "24/01/1997 - 8:00 am")
+        let id = Atividade.generateAtividadeId(materiaName: "indefinido", title: "reuniao com a diretoria", date: date!)
+        
+        XCTAssertEqual(id, "atividadeindefinidoreuniao com a diretoria24/01/1997 - 8:00 AM")
+    }
 }

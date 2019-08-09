@@ -2,7 +2,7 @@
 //  Atividade+CoreDataProperties.swift
 //  UhereLast
 //
-//  Created by Wellington Tatsunori Asahide on 10/05/19.
+//  Created by Wellington Tatsunori Asahide on 14/07/19.
 //  Copyright © 2019 tatsu. All rights reserved.
 //
 //
@@ -19,6 +19,7 @@ extension Atividade {
 
     @NSManaged public var alertaOffSet: Double
     @NSManaged public var anotacao: String?
+    @NSManaged public var concluido: Bool
     @NSManaged public var cor: String?
     @NSManaged public var diaHora: NSDate?
     @NSManaged public var local: String?
@@ -27,7 +28,7 @@ extension Atividade {
     @NSManaged public var offSetString: String?
     @NSManaged public var peso: Double
     @NSManaged public var tipo: String?
-    @NSManaged public var concluido: Bool
+    @NSManaged public var notificationId: String?
     @NSManaged public var relationship: Materia?
 
 }

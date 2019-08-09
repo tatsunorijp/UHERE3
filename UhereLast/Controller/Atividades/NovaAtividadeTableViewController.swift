@@ -18,7 +18,7 @@ class NovaAtividadeTableViewController: UITableViewController {
     @IBOutlet weak var tfLocal: UITextField!
     @IBOutlet weak var tfAnotacao: UITextView!
     let datePicker = UIDatePicker()
-    var materiaSelecionada = Materia()
+    var materiaSelecionada: Materia?
     //se offSetSelcionado for -1, significa que está desativado o alarme
     var offSetSelecionado: Double = -1
     var selecionado: Bool = false
@@ -26,9 +26,6 @@ class NovaAtividadeTableViewController: UITableViewController {
     override func viewDidLoad() {
         loadFunctions()
         super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
     }
 
     @IBAction func novaAtividade(_ sender: Any) {
@@ -45,24 +42,10 @@ class NovaAtividadeTableViewController: UITableViewController {
             }
             let data = tfData.date
             
-            if(selecionado){
-                if let atividade = Atividade.init(nome: nome, tipo: tipo, data: data, alertaOffSet: offSetSelecionado, local: local, anotacao: anotacao, cor: materiaSelecionada.cor!, offSetString: lbAlerta.text!){
-                    Atividade.saveWithMateria(materia: materiaSelecionada, atividade: atividade)
-                    id = Notificacoes.idGenerator(type: "Atividade",materia: atividade.relationship!.nome!, title: atividade.nome!, date: atividade.diaHora! as Date)
-                    createNotification(atividade: atividade, id: id)
-                }else{
-                    print("Erro no if com saveWithMateria")
-                }
-            }else{
-                if let atividade = Atividade.init(nome: nome, tipo: tipo, data: data, alertaOffSet: offSetSelecionado, local: local, anotacao: anotacao, cor: "AAABAA", offSetString: lbAlerta.text!){
-                    id = Notificacoes.idGenerator(type: "Atividade",materia: "Indefinido", title: atividade.nome!, date: atividade.diaHora! as Date)
-                    createNotification(atividade: atividade, id: id)
-
-                    Atividade.save(atividade: atividade)
-                }else{
-                    print("Erro no if withOutMateria")
-                }
+            if let atividade = Atividade.init(nome: nome, tipo: tipo, data: data, alertaOffSet: offSetSelecionado, local: local, anotacao: anotacao, cor: materiaSelecionada?.cor! ?? "AAABAA", offSetString: lbAlerta.text!){
+                Atividade.completeSave(atividade: atividade, materia: materiaSelecionada)
             }
+            
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -73,7 +56,7 @@ class NovaAtividadeTableViewController: UITableViewController {
             destino.selecionarDisciplinaProtocol = self
         }else if (segue.identifier == "selecionarAlerta"){
             let destino = segue.destination as! AlertaTableViewController
-            destino.alertaProtocol = self as? AlertaProtocol
+            destino.alertaProtocol = self
         }else if (segue.identifier == "selecionarTipo"){
             let destino = segue.destination as! TipoAtividadeTableViewController
             destino.tipoAtividadeProtocol = self
@@ -83,7 +66,6 @@ class NovaAtividadeTableViewController: UITableViewController {
     
     func loadFunctions(){
         tfData.setConfig(format: Constants.dateTimeFormat, mode: .dateAndTime)
-        materiaSelecionada = Materia.init(nome: "Indefinido", local: "indefinido", professor: "indefinido", limiteFaltas: 0, faltas: 0, cor: "AAABAA", offSet: 0, offSetString:"Desativado")!
         
         tableView.keyboardDismissMode = .onDrag
     }
@@ -111,18 +93,19 @@ class NovaAtividadeTableViewController: UITableViewController {
 }
 
 extension NovaAtividadeTableViewController: SelecionarDisciplinaProtocol{
-    func disciplina(disciplina: Materia, selecionado: Bool) {
-        if(selecionado){
-            materiaSelecionada = disciplina
-            lbDisciplina.text = disciplina.nome
-            lbDisciplina.textColor = UIColor.colorWithHexString(disciplina.cor ?? "#00CDF6")
-        }else{
-            lbDisciplina.text = "Indefinido"
-            lbDisciplina.textColor = UIColor.lightGray
-        }
-        self.selecionado = selecionado
+    func disciplina(disciplina: Materia?) {
+        materiaSelecionada = disciplina
+        lbDisciplina.text = disciplina?.nome
+        lbDisciplina.textColor = UIColor.colorWithHexString(disciplina?.cor ?? "#00CDF6")
     }
     
+}
+
+extension NovaAtividadeTableViewController: AlertaProtocol{
+    func relativeOffSet(offSet: Double, string: String) {
+        lbAlerta.text = string
+        offSetSelecionado = offSet
+    }
 }
 
 extension NovaAtividadeTableViewController: TipoAtividadeProtocol{

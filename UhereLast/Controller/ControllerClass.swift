@@ -49,13 +49,6 @@ class Controller{
         vc.present(alert, animated: true, completion: nil)
     }
     
-//    static func configureTableViewController(view: UITableViewController){
-//        
-//    }
-//    
-//    static func configureTableView(tableView: UITableView){
-//    }
-    
     static func getDiasSemana(diasHoras: DiasHoras) -> [Bool]{
         var dias:[Bool] = []
         

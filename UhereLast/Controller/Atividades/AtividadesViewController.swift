@@ -16,6 +16,7 @@ class AtividadesViewController: ViewController, UITableViewDelegate, UITableView
     var materias: [Materia] = []
     var id: String = ""
     var segmentedControlValue: Int = 0
+    var atividadesWithOutMateria: [Atividade] = []
 
     struct atividadesStruct{
         var sectionName: String!
@@ -35,13 +36,13 @@ class AtividadesViewController: ViewController, UITableViewDelegate, UITableView
         super.viewDidAppear(animated)
         loadFunctions()
         tableView.reloadData()
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         //GAMBIARRA PARA REMOVER O VINCULO ENTRE MATERIAINDEFINIDA E ATIVIDADEINDEFINIDA CRIADAS NA APARICAO DA TELA
-        let atividadesWithOutMateria = Atividade.getAtividadesWithOutMateria()
         for atividade in atividadesWithOutMateria {
             atividade.relationship = nil
         }
@@ -49,12 +50,11 @@ class AtividadesViewController: ViewController, UITableViewDelegate, UITableView
     
     func loadFunctions(){
         Controller.dateTimeFormat()
-        
-        let materiaIndefinida = Materia.init(nome: "Indefinido", local: "", professor: "", limiteFaltas: 0, faltas: 0, cor: "#00CDF6", offSet: 0.0, offSetString: "Desativado")
-
         materias = Materia.getMateriasWithAtividades()
 
-        let atividadesWithOutMateria = Atividade.getAtividadesWithOutMateria()
+        let materiaIndefinida = Materia.init(nome: "Indefinido", local: "", professor: "", limiteFaltas: 0, faltas: 0, cor: "#00CDF6", offSet: 0.0, offSetString: "Desativado")
+
+        atividadesWithOutMateria = Atividade.getAtividadesWithOutMateria()
         //GAMBIARRA PARA ADD VINCULO NA ATIVIDADE SEM MATERIA
         for atividade in atividadesWithOutMateria {
             materiaIndefinida?.addToRawAtividades(atividade)
@@ -79,8 +79,8 @@ class AtividadesViewController: ViewController, UITableViewDelegate, UITableView
                     localAtividades = []
                 }
             }
-        }else {
-            for materia in materias{
+        } else {
+            for materia in materias {
                 for atividade in materia.atividades!{
                     if(atividade.concluido){
                         localAtividades.append(atividade)
@@ -148,7 +148,7 @@ class AtividadesViewController: ViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .destructive, title: "Deletar"){ (contextualAction, view, actionPerformed:@escaping (Bool) -> ()) in
+        let delete = UIContextualAction(style: .destructive, title: "Deletar"){ (contextualAction, view, actionPerformed: @escaping (Bool) -> ()) in
             
             var atividade = Atividade()
             if(self.segmentedControlValue != 0){
@@ -165,15 +165,7 @@ class AtividadesViewController: ViewController, UITableViewDelegate, UITableView
             
             alerta.addAction(UIAlertAction(title: "Deletar", style: .default, handler: {(alertAction) in
                 
-                if (atividade.relationship != nil){
-                    self.id = Notificacoes.idGenerator(type: "Atividade",materia: atividade.relationship!.nome!, title: atividade.nome!, date: atividade.diaHora! as Date)
-                }else{
-                    self.id = Notificacoes.idGenerator(type: "Atividade",materia: "Indefinido", title: atividade.nome!, date: atividade.diaHora! as Date)
-                }
-                
-                
-                Notificacoes.delete(id: [self.id])
-                Atividade.delete(atividade: atividade)
+                Atividade.completeDelete(atividade: atividade)
                 if(self.segmentedControlValue != 0){
                     self.atividadesToShow[indexPath.section].atividades.remove(at: indexPath.row)
                 }
@@ -200,21 +192,6 @@ class AtividadesViewController: ViewController, UITableViewDelegate, UITableView
             tableView.reloadData()
         }
         
-    }
-    
-    func biggerThenToday(date: Date) -> Bool{
-        let calendar = NSCalendar.current
-        let toDayComponents = calendar.dateComponents([.day, .month, .year], from: Date())
-        let dayActivityComponents = calendar.dateComponents([.day, .month, .year], from: date)
-        
-        let toDay = Controller.dateFormatter.calendar.date(from: toDayComponents)!
-        let dayActivity = Controller.dateFormatter.calendar.date(from: dayActivityComponents)!
-        
-        if dayActivity >= toDay{
-            return true
-        }
-
-        return false
     }
     
     // MARK: - Navigation

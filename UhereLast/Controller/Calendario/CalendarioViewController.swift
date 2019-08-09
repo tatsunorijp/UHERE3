@@ -22,7 +22,7 @@ struct Objects{
 class CalendarioViewController: UIViewController, UITabBarDelegate, UITableViewDataSource{
     let formatter = DateFormatter()
     @IBOutlet weak var calendarView: JTAppleCalendarView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: TableView!
     //@IBOutlet weak var lbMesAno: UILabel!
     
     var mes = String()
@@ -120,7 +120,7 @@ class CalendarioViewController: UIViewController, UITabBarDelegate, UITableViewD
                 if (atividade.relationship == nil){
                     cell.lbMateria.text = "Indefinido"
                     cell.colorView.backgroundColor = Controller.grayColor
-                }else{
+                } else {
                     cell.lbMateria.text = atividade.relationship?.nome
                     cell.colorView.backgroundColor = UIColor.colorWithHexString(atividade.relationship!.cor!)
                 }
@@ -155,35 +155,6 @@ class CalendarioViewController: UIViewController, UITabBarDelegate, UITableViewD
     
     func getCompromissos(){
         let semestres = Semestre.getSemestres() as! [Semestre]
-        /*avaliacoes = []
-        atividades = []
-        if semestres.count > 0 {
-            for semestre in semestres{
-                for materia in semestre.materias!{
-                    materias.append(materia)
-                    
-                    if(materia.provas!.count > 0){
-                        for prova in materia.provas!{
-                            avaliacoes.append(prova)
-                        }
-                    }
-                    
-                    if(materia.atividades!.count > 0){
-                        for atividade in materia.atividades!{
-                            atividades.append(atividade)
-                        }
-                    }
-                }
-            }
-        }
-        
-        let atividadesTodas = Atividade.getAtividades() as! [Atividade]
-        for atividade in atividadesTodas{
-            if (atividade.relationship == nil){
-                atividades.append(atividade)
-            }
-        }
-    */
         for semestre in semestres {
             for materia in semestre.materias!{
                 materias.append(materia)

@@ -86,9 +86,20 @@ class Notificacoes{
         
     }
     
-    static func update(title: String, oldId: String, newId: String, body: String, date: Date, offSet: Double){
+    static func update(title: String, oldId: String, newId: String?, body: String, date: Date, offSet: Double){
         self.delete(id: [oldId])
-        self.create(title: title, body: body, date: date, offSet: offSet, id: newId)
+        
+        if let newId = newId {
+            self.create(title: title, body: body, date: date, offSet: offSet, id: newId)
+        }
+    }
+    
+    static func completeUpdate(title: String, oldId: String, newId: String, body: String, date: Date, offSet: Double) {
+        self.delete(id: [oldId])
+        
+        if (offSet >= 0) {
+            self.create(title: title, body: body, date: date, offSet: offSet, id: newId)
+        }
     }
     
     static func updateForMateria(content: UNMutableNotificationContent, dias: [Bool], horas: [Date], offSet: Double, oldIds: [String], newIds: [String]){
@@ -100,9 +111,7 @@ class Notificacoes{
             UNUserNotificationCenter.current()
         notificationCenter.getPendingNotificationRequests { (notifications) in
             for notification in notifications{
-                print(notification)
                 print(notification.identifier)
-
             }
         }
     }
@@ -125,7 +134,6 @@ class Notificacoes{
             return type + materia + title + dateFormatter.string(from: date!)
         }
         return type + materia + title
-
     }
     
     static func idGeneratorForMateria(type: String, materia: String, weekday: String) -> String{
