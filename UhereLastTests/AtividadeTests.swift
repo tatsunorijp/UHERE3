@@ -26,12 +26,10 @@ class AtividadeTests: XCTestCase {
         let newAtividade = Atividade.init(nome: "atividade de test", tipo: "reuniao", data: Date(), alertaOffSet: 5.0, local: "none", anotacao: "none", cor: "FFFFFF", offSetString: "5 double")
         XCTAssertNotNil(newAtividade)
 
-//        Atividade.save(atividade: newAtividade!)
         Atividade.completeSave(atividade: newAtividade!, materia: nil)
         let quantityAfterSave = Atividade.getAtividades().count
         XCTAssertEqual(initialQuantity, quantityAfterSave - 1)
         
-//        Atividade.delete(atividade: newAtividade!)
         Atividade.completeDelete(atividade: newAtividade!)
         let quantityAfterDelete = Atividade.getAtividades().count
         XCTAssertEqual(initialQuantity, quantityAfterDelete)

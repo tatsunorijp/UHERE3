@@ -19,7 +19,6 @@ class MateriasTableViewController: TableViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
-
     }
 
     // MARK: - Table view data source
@@ -45,18 +44,12 @@ class MateriasTableViewController: TableViewController {
             cell.lbFaltas.text = String(materia.faltas)
             if let faltas = materia.falta?.count{
                 cell.lbLimiteFaltas.text = String(faltas) + "/" + String(materia.limiteFalta)
-
             }
-            cell.lbLocal.text = materia.local
             
-            if let countAvaliacoes = materia.rawProvas?.count {
-                cell.lbAvaliacoes.text = String(countAvaliacoes)
-                if (countAvaliacoes > 0){
-                    mediaAtual = calculoDaMedia(provas: materia.provas!)
-                    cell.lbMedia.text = String(mediaAtual)
-                }
-            }
-            cell.lbSituacao.text = calculoSituacao(provas: materia.provas!)            
+            cell.lbLocal.text = materia.local
+            cell.lbAvaliacoes.text = String(materia.provas?.count ?? 0)
+            cell.lbMedia.text = materia.getMedia() // String(mediaAtual)
+            cell.lbSituacao.text = materia.getSituation() //calculoSituacao(provas: materia.provas!)            
         }
         
         return cell
@@ -144,46 +137,6 @@ class MateriasTableViewController: TableViewController {
         horas.append(diasHoras.hQuinta! as Date)
         horas.append(diasHoras.hSexta! as Date)
         horas.append(diasHoras.hSabado! as Date)
-    }
-    
-    func calculoDaMedia(provas: [Prova]) -> Double{
-        var totalNotas: Double = 0
-        var totalPesos: Double = 0
-        for prova in provas{
-            if prova.concluido{
-                totalNotas = totalNotas + (prova.nota * prova.peso)
-                totalPesos = totalPesos + prova.peso
-            }
-        }
-        
-        return totalNotas/totalPesos
-    }
-    
-    func calculoSituacao(provas: [Prova]) -> String{
-        var provasConcluídas: Int = 0
-        for prova in provas{
-            if prova.concluido{
-                provasConcluídas = provasConcluídas + 1
-            }
-        }
-        
-        if provasConcluídas == provas.count{
-            if (mediaAtual >= 60){
-                return "Aprovado"
-            }else{
-                return "Reprovado"
-            }
-        }else if (provasConcluídas - 1 == provas.count){
-            if let ultimaProva = provas.last {
-                let valor = (mediaAtual + ultimaProva.nota * ultimaProva.peso)/ultimaProva.peso+1
-                
-                if (valor < 60){
-                    return "Reprovado"
-                }
-            }
-        }
-        
-        return "Indefinido"
     }
 
 }

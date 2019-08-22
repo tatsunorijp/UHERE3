@@ -14,9 +14,18 @@ import UIKit
 @objc(Materia)
 public class Materia: NSManagedObject {
     
+    enum Constants {
+        static let indefinido = "Indefinido"
+        static let reprovadoPorNota = "Reprovado por nota"
+        static let aprovado = "Aprovado"
+        static let reprovadoPorFalta = "Reprovado por falta"
+        static let notaParaAprovacao1 = "Precisa de "
+        static let notaParaAprovacao2 = " pontos na última avaliação"
+
+    }
+    
     var provas: [Prova]? {
         return self.rawProvas?.array as? [Prova]
-        
     }
     
     var atividades: [Atividade]?{
@@ -26,6 +35,8 @@ public class Materia: NSManagedObject {
     var falta: [Falta]? {
         return self.rawFaltas?.array as? [Falta]
     }
+    
+    var mediaAtual = 0.0
     
     
     convenience init?(nome: String, local: String, professor: String, limiteFaltas: Int, faltas: Int, cor: String, offSet: Double, offSetString: String) {
@@ -98,5 +109,64 @@ public class Materia: NSManagedObject {
             }
         }
         return materiasWithAtividade
+    }
+    
+    func getMedia() -> String {
+        var totalPoints = 0.0
+        var totalWeigth = 0.0
+        
+        for prova in provas ?? [] {
+            if prova.concluido {
+                totalPoints += (prova.nota * prova.peso)
+            }
+            totalWeigth += prova.peso
+        }
+        mediaAtual = totalPoints / totalWeigth
+        return String(mediaAtual.rounded())
+    }
+    
+    func getSituation() -> String {
+        var provasConcluidas = 0
+        var totalWeigth = 0.0
+        
+        if falta?.count ?? 0 > limiteFalta {
+            return Constants.reprovadoPorFalta
+        }
+        
+        if mediaAtual >= 60 {
+            return Constants.aprovado
+        }
+        
+        for prova in provas ?? [] {
+            if prova.concluido {
+                provasConcluidas += 1
+            }
+            
+            totalWeigth += prova.peso
+        }
+        
+        if provasConcluidas == provas?.count {
+            if mediaAtual >= 60.0 {
+                return Constants.aprovado
+            } else {
+                return Constants.reprovadoPorNota
+            }
+        } else if provasConcluidas + 1 == provas?.count {
+            var notaParaPassar: Double = 0
+            
+            for prova in provas ?? [] {
+                if !prova.concluido {
+                    notaParaPassar = (60 - mediaAtual) * totalWeigth
+                }
+            }
+            
+            if notaParaPassar >= 100 {
+                return Constants.reprovadoPorNota
+            }
+            return Constants.notaParaAprovacao1 + String(notaParaPassar.rounded()) + Constants.notaParaAprovacao2
+            
+            
+        }
+        return Constants.indefinido
     }
 }
